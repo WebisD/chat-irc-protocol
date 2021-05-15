@@ -15,5 +15,5 @@ class HandlerConnections(Thread):
             connectionSocket, addr = self.server.serverSocket.accept()
             
             self.server.activeUser.append(connectionSocket)
-            t = HandlerRequests(connectionSocket)
+            t = HandlerRequests(connectionSocket, self.server)
             t.start()  
