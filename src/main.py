@@ -1,4 +1,4 @@
-from Server import startServer
+from entities.Server import startServer
 
 """ Calls the function that instantiates a server
         
