@@ -1,4 +1,7 @@
 class JoinRoom:
     @staticmethod
     def response(connectionSocket, server, roomname) -> None:
-        print(connectionSocket)
+        
+        for rooms in server.activeRooms:
+            if rooms.name == roomname:
+                rooms.add(connectionSocket)
