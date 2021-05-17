@@ -30,11 +30,12 @@ class HandlerRequests(Thread):
         elif request.find("/message") != -1:
             print(request)
             Message.response(self.connectionSocket, self.server, request.split(' ')[1])
+       
         
     def run(self):
         while True:
             request = self.connectionSocket.recv(1024).decode()
-            print(request)
+            
             if not request: 
                 break
             else:
