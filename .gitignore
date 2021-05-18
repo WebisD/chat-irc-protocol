@@ -1,3 +1,5 @@
 .idea
 venv
 identifier.sqlite
+*/pyvenv.cfg
+*/*/__pycache__/
