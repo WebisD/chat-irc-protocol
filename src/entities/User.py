@@ -7,3 +7,7 @@ class User:
         self.password = password
         self.connectionSkt = connectionSkt
         self.statusRoom = 'lobby'
+        self.isLogged = False
+
+    def toggleLog(self):
+        self.isLogged = not self.isLogged

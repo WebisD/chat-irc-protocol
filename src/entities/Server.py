@@ -21,6 +21,7 @@ class Server:
         self.handlerConnections.start()    
         self.activeUser = [] 
         self.activeRooms = [] 
+        self.registeredUsers = []
 
 
 def startServer() -> None:

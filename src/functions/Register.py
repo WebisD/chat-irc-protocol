@@ -2,10 +2,10 @@ from entities.User import User
 
 class Register:
     @staticmethod
-    def response(connectionSocket, server, name, nick, password) -> None:
+    def response(user, server, name, nick, password) -> None:
         try:
-            user = User(name, nick, password, connectionSocket)
-            server.activeUser.append(user)
-            print("Client " + str(name) + " successfully registered ")
+            user = User(name, nick, password, user.connectionSkt)
+            server.registeredUsers.append(user)
+            user.connectionSkt.send( ("Client " + str(name) + " successfully registered \n\n").encode())
         except:
-            print("Errot in register client " + str(name))
+            user.connectionSkt.send( ("Error in register client " + str(name) + " \n\n").encode() )
