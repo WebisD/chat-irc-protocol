@@ -14,32 +14,44 @@ class HandlerRequests(Thread):
         self.connectionSocket = connectionSocket
         self.server = server
         self.user = user
+        self.commands = ["/create","/join", "/message", "/help", "/login", "/register"]
 
     def parseRequest(self, request):
         try:
             print(request)
             request = request.replace('\n', '').replace('\r','')
             print(self.user)
+            if request.find("/help") != -1:
+                Help.response(self.user)
             if self.user.isLogged: 
                 if request.find("/create") != -1:
                     CreateRoom.response(self.user, self.server, request.split(' ')[1], request.split(' ')[2])
                 elif request.find("/join") != -1:
-                    JoinRoom.response(self.user, self.server, request.split(' ')[1])
+                    self.user = JoinRoom.response(self.user, self.server, request.split(' ')[1])
                 elif request.find("/message") != -1:
                     print(request)
                     Message.response(self.user, self.server, request.split(' ')[1])
+                elif request in self.commands:
+                    self.user.connectionSkt.send( ("Ocorreu um erro ao ler o comando, verifique se você está logado ou se os comandos possuem args corretos\n\n").encode() )
+                else:
+                    raise Exception("Command invalid")
+                
             else:
-                if request.find("/help") != -1:
-                    Help.response(self.user)
-                elif request.find("/login") != -1:
-                    Login.response(self.user, self.server, request.split(' ')[1], request.split(' ')[2])
+                if request.find("/login") != -1:
+                    self.user = Login.response(self.user, self.server, request.split(' ')[1], request.split(' ')[2])
                 elif request.find("/register") != -1:
                     Register.response(self.user, self.server, request.split(' ')[1], request.split(' ')[2],  request.split(' ')[3])
+                elif request in self.commands:
+                    self.user.connectionSkt.send( ("Ocorreu um erro ao ler o comando, verifique se você está logado ou se os comandos possuem args corretos\n\n").encode() )
+                else:
+                    raise Exception("Command invalid")
+        
         except:
             self.user.connectionSkt.send( ("Ocorreu um erro ao ler o comando, verifique se você está logado ou se os comandos possuem args corretos\n\n").encode() )
     def run(self):
         while True:
             request = self.connectionSocket.recv(1024).decode()
+            print(self.user.toString())
             
             if not request: 
                 break
