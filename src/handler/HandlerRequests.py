@@ -7,6 +7,8 @@ from functions.CreateRoom import CreateRoom
 from functions.JoinRoom import JoinRoom
 from functions.LeaveRoom import LeaveRoom
 from functions.Message import Message
+from functions.ListRoom import ListRoom
+from functions.ListUsersRoom import ListUsersRoom
 
 class HandlerRequests(Thread):
     def __init__(self, connectionSocket, server, user):
@@ -18,23 +20,27 @@ class HandlerRequests(Thread):
 
     def parseRequest(self, request):
         try:
-            print(request)
             request = request.replace('\n', '').replace('\r','')
-            print(self.user)
+
             if request.find("/help") != -1:
                 Help.response(self.user)
+
             if self.user.isLogged: 
+                if request.find("/listusers") != -1:
+                    ListUsersRoom.response(self.user, self.server)
+                
+                if self.user.statusRoom != 'lobby':
+                    if request.find("/message") != -1:
+                        Message.response(self.user, self.server, request.replace('/message', ''))
+                    elif request.find("/leave") != -1:
+                        self.user = LeaveRoom.response(self.user, self.server)
+
                 if request.find("/create") != -1:
                     CreateRoom.response(self.user, self.server, request.split(' ')[1], request.split(' ')[2])
                 elif request.find("/join") != -1:
                     self.user = JoinRoom.response(self.user, self.server, request.split(' ')[1])
-                elif request.find("/message") != -1:
-                    print(request)
-                    Message.response(self.user, self.server, request.split(' ')[1])
-                elif request in self.commands:
-                    self.user.connectionSkt.send( ("Ocorreu um erro ao ler o comando, verifique se você está logado ou se os comandos possuem args corretos\n\n").encode() )
-                else:
-                    raise Exception("Command invalid")
+                elif request.find("/listrooms") != -1:
+                    ListRoom.response(self.user, self.server)
                 
             else:
                 if request.find("/login") != -1:

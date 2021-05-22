@@ -9,6 +9,10 @@ class Room:
         self.name = name
         self.list_of_clients = [] 
         self.maxUser = maxUser
+        self.messages = {
+            "user": [],
+            "txt": []
+        }
 
     def clientthread(self, user, message): 
         # sends a message to the client whose user object is conn 
@@ -18,15 +22,18 @@ class Room:
     clients who's object is not the same as the one sending 
     the message """
     def broadcast(self, message, user): 
-        for clients in self.list_of_clients: 
-            if clients.connectionSkt!=user.connectionSkt: 
+        for client in self.list_of_clients: 
+            if client.connectionSkt!=user.connectionSkt: 
                 try: 
-                    clients.connectionSkt.send((message + "\n").encode()) 
+                    client.connectionSkt.send((user.nick + ": " + message + "\n").encode()) 
+                    self.messages['user'].append(user.nick)
+                    self.messages['txt'].append(message)
+
                 except: 
-                    clients.connectionSkt.close() 
+                    client.connectionSkt.close() 
     
                     # if the link is broken, we remove the client 
-                    self.remove(clients) 
+                    self.remove(client) 
             else:
                 user.connectionSkt.send(("you said: " + message + "\n").encode())
     
@@ -36,14 +43,17 @@ class Room:
     def remove(self, user): 
         if user in self.list_of_clients: 
             self.list_of_clients.remove(user) 
+            self.broadcast("Sai da sala " + str(user.name), user)
+            user.connectionSkt.send(("Say goodbye to " + self.name + "!\n\n").encode())  
+            return True
+        return False
     
     def add(self, user: User): 
         if (len(self.list_of_clients) + 1) <= self.maxUser:
             if user not in self.list_of_clients: 
                 self.list_of_clients.append(user)
             print(self.list_of_clients)
-            #self.broadcast("Entrou na sala " + str(user.name), user)
             user.connectionSkt.send(("Welcome to " + self.name + "!\n\n").encode())  
+            self.broadcast("Entrei na sala " + str(user.name), user)
             return True 
-        
         return False

@@ -7,7 +7,7 @@ class CreateRoom:
             if name == '' or maxUser == '':
                 raise Exception("Invalid command")
             room = Room(name, int(maxUser))
-            server.activeRooms.append(room)
+            server.registeredRooms.append(room)
             user.connectionSkt.send(("Room " + str(name) + " created!\n\n").encode())
         except:
            user.connectionSkt.send(("Error in create room " + str(name) + " \n\n").encode())

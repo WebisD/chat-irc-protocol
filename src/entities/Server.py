@@ -20,7 +20,7 @@ class Server:
         self.handlerConnections = HandlerConnections(self)
         self.handlerConnections.start()    
         self.activeUser = [] 
-        self.activeRooms = [] 
+        self.registeredRooms = [] 
         self.registeredUsers = []
 
 

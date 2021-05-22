@@ -6,7 +6,7 @@ class JoinRoom:
         try:
             if roomname == '':
                 raise Exception("Invalid command")
-            for room in server.activeRooms:
+            for room in server.registeredRooms:
                 if room.name == roomname:
                     if room.add(user):
                         user.statusRoom = roomname
