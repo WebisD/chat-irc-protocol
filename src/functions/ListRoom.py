@@ -8,3 +8,6 @@ class ListRoom:
             user.connectionSkt.send(("As salas são: \n\n").encode())       
             for room in server.registeredRooms:
                 user.connectionSkt.send((str(room.name) + " \n\n").encode())   
+            return    
+        user.connectionSkt.send(("Você já está em uma sala \n\n").encode())       
+
