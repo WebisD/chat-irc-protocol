@@ -35,13 +35,17 @@ class HandlerRequests(Thread):
                         Message.response(self.user, self.server, request.replace('/message', ''))
                     elif request.find("/leave") != -1:
                         self.user = LeaveRoom.response(self.user, self.server)
-
-                if request.find("/create") != -1:
-                    CreateRoom.response(self.user, self.server, request.split(' ')[1], request.split(' ')[2])
-                elif request.find("/join") != -1:
-                    self.user = JoinRoom.response(self.user, self.server, request.split(' ')[1])
-                elif request.find("/listrooms") != -1:
-                    ListRoom.response(self.user, self.server)
+                    else:
+                        raise Exception("Command invalid")
+                else:
+                    if request.find("/create") != -1:
+                        CreateRoom.response(self.user, self.server, request.split(' ')[1], request.split(' ')[2])
+                    elif request.find("/join") != -1:
+                        self.user = JoinRoom.response(self.user, self.server, request.split(' ')[1])
+                    elif request.find("/listrooms") != -1:
+                        ListRoom.response(self.user, self.server)
+                    else:
+                        raise Exception("Command invalid")
                 
             else:
                 if request.find("/login") != -1:
@@ -60,15 +64,20 @@ class HandlerRequests(Thread):
 
     def run(self):
         while True:
-            request = self.connectionSocket.recv(1024).decode()
-            print(self.user.toString())
-            
-            if not request: 
-                break
-            else:
-                if request.find("/exit") != -1:
-                    print("connection closed")
-                    self.connectionSocket.close()
+            try:
+                request = self.connectionSocket.recv(1024).decode()
+                print(self.user.toString())
+
+                if not request: 
                     break
                 else:
-                    self.parseRequest(request)
+                    if request.find("/exit") != -1:
+                        print("connection closed")
+                        self.connectionSocket.close()
+                        break
+                    else:
+                        self.parseRequest(request)
+            except:
+                if self.user.statusRoom != 'lobby':
+                    self.user = LeaveRoom.response(self.user, self.server)
+                self.connectionSocket.close()
