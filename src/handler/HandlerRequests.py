@@ -23,12 +23,22 @@ class HandlerRequests(Thread):
         try:
             request = request.replace('\n', '').replace('\r', '')
 
-            if self.user.isLogged:
-                if request.find("/help") != -1:
-                    Help.response(self.user)
+            if request.find("/help") != -1:
+                   Help.response(self.user)
+                   return
 
+            if self.user.isLogged:
                 if request.find("/listusers") != -1:
                     ListUsersRoom.response(self.user, self.server)
+                    return
+
+                if request.find("/logout") != -1:
+                    if self.user.statusRoom != 'lobby':
+                        self.user = LeaveRoom.response(self.user, self.server)
+                    self.user.toggleLog()
+                    self.user = self.user
+                    self.user.connectionSkt.send( ("Você foi deslogado com sucesso!\n\n").encode() )
+                    return
 
                 if self.user.statusRoom != 'lobby':
                     if request.find("/message") != -1:
