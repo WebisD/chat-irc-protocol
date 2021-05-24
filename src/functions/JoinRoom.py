@@ -1,5 +1,6 @@
 from entities.User import User
 
+
 class JoinRoom:
     @staticmethod
     def response(user, server, roomname) -> None:
@@ -15,5 +16,3 @@ class JoinRoom:
             return user
         except:
             print("Error in join client ")
-
-        
