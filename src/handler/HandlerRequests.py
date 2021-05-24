@@ -1,12 +1,13 @@
 import time
 from threading import Thread
-from functions.Help import Help
-from functions.Login import Login
-from functions.Register import Register
-from functions.CreateRoom import CreateRoom
-from functions.JoinRoom import JoinRoom
-from functions.LeaveRoom import LeaveRoom
-from functions.Message import Message
+from commands.Help import Help
+from commands.Login import Login
+from commands.Register import Register
+from commands.CreateRoom import CreateRoom
+from commands.JoinRoom import JoinRoom
+from commands.LeaveRoom import LeaveRoom
+from commands.Message import Message
+
 
 class HandlerRequests(Thread):
     def __init__(self, connectionSocket, server):
