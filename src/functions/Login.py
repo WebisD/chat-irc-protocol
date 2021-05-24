@@ -8,7 +8,7 @@ class Login:
         try:
             if nick == '' or password == '':
                 raise Exception("Invalid command")
-
+            print(f"Chegou {nick, password}")
             nick_ok = False
             pass_ok = False
             logged_ok = False
@@ -20,10 +20,10 @@ class Login:
                     nick_ok = True
                     pass_ok = True
                     break
-                if userRegistered.isLogged:
-                    logged_ok = True
                 if userRegistered.nick == nick:
                     nick_ok = True
+                    if userRegistered.isLogged:
+                        logged_ok = True
                 if userRegistered.password == password:
                     pass_ok = True
 
