@@ -3,11 +3,17 @@ import select
 import sys 
 import _thread
 from entities.User import User
+import sys
+import os
+from Interface.PrettyPrint import PrettyPrint
+from Interface.Colors import Colors
+
 
 class Room:
     def __init__(self, name, maxUser):
+        self.width = os.get_terminal_size().columns
         self.name = name
-        self.list_of_clients = [] 
+        self.list_of_clients = []
         self.maxUser = maxUser
         self.messages = {
             "user": [],
@@ -23,9 +29,11 @@ class Room:
     the message """
     def broadcast(self, message, user): 
         for client in self.list_of_clients: 
-            if client.connectionSkt!=user.connectionSkt: 
-                try: 
-                    client.connectionSkt.send((user.nick + ": " + message + "\n").encode()) 
+            if client.connectionSkt != user.connectionSkt:
+                try:
+                    name_color = PrettyPrint.pretty_print(user.nick, user.color)
+                    message_body = (name_color + ": " + message + "\n").rjust(self.width)
+                    client.connectionSkt.send(message_body.encode())
                     self.messages['user'].append(user.nick)
                     self.messages['txt'].append(message)
 

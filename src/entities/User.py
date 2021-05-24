@@ -1,4 +1,7 @@
 from socket import *
+from Interface.Colors import Colors
+import random
+
 
 class User:
     def __init__(self, name, nick, password, connectionSkt):
@@ -8,6 +11,7 @@ class User:
         self.connectionSkt = connectionSkt
         self.statusRoom = 'lobby'
         self.isLogged = False
+        self.color = random.choice(Colors.user_colors)
 
     def toggleLog(self):
         self.isLogged = not self.isLogged
