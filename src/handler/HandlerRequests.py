@@ -24,8 +24,8 @@ class HandlerRequests(Thread):
             request = request.replace('\n', '').replace('\r', '')
 
             if request.find("/help") != -1:
-                   Help.response(self.user)
-                   return
+                Help.response(self.user)
+                return
 
             if self.user.isLogged:
                 if request.find("/listusers") != -1:
@@ -37,7 +37,7 @@ class HandlerRequests(Thread):
                         self.user = LeaveRoom.response(self.user, self.server)
                     self.user.toggleLog()
                     self.user = self.user
-                    self.user.connectionSkt.send( ("Você foi deslogado com sucesso!\n\n").encode() )
+                    self.user.connectionSkt.send("Você foi deslogado com sucesso!\n\n".encode())
                     return
 
                 if self.user.statusRoom != 'lobby':
@@ -56,21 +56,22 @@ class HandlerRequests(Thread):
                         ListRoom.response(self.user, self.server)
                     else:
                         raise Exception("Command invalid")
-                
+
             else:
                 if request.find("/login") != -1:
                     self.user = Login.response(self.user, self.server, request.split(' ')[1], request.split(' ')[2])
                 elif request.find("/register") != -1:
-                    Register.response(self.user, self.server, request.split(' ')[1], request.split(' ')[2],  request.split(' ')[3])
+                    Register.response(self.user, self.server, request.split(' ')[1], request.split(' ')[2],
+                                      request.split(' ')[3])
                 elif request in self.commands:
-                    self.user.connectionSkt.send( ("Ocorreu um erro ao ler o comando, verifique se você está logado ou "
-                                                   "se os comandos possuem args corretos\n\n").encode() )
+                    self.user.connectionSkt.send(("Ocorreu um erro ao ler o comando, verifique se você está logado ou "
+                                                  "se os comandos possuem args corretos\n\n").encode())
                 else:
                     raise Exception("Command invalid")
-        
+
         except:
-            self.user.connectionSkt.send( ("Ocorreu um erro ao ler o comando, verifique se você está logado ou se os "
-                                           "comandos possuem args corretos\n\n").encode() )
+            self.user.connectionSkt.send(("Ocorreu um erro ao ler o comando, verifique se você está logado ou se os "
+                                          "comandos possuem args corretos\n\n").encode())
 
     def run(self):
         while True:
@@ -78,7 +79,7 @@ class HandlerRequests(Thread):
                 request = self.connectionSocket.recv(1024).decode()
                 print(self.user.toString())
 
-                if not request: 
+                if not request:
                     break
                 else:
                     if request.find("/exit") != -1:
