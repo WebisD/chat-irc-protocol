@@ -9,6 +9,7 @@ from random import randint
 from Interface.PrettyPrint import PrettyPrint
 from Interface.Colors import Colors
 import os
+import shutil
 
 
 class HandlerConnections(Thread):
@@ -16,6 +17,7 @@ class HandlerConnections(Thread):
         Thread.__init__(self)
         self.server = server
         self.width = os.get_terminal_size().columns
+        self.terminal_size = shutil.get_terminal_size(fallback=(120, 50))
 
     def run(self):
         while True:

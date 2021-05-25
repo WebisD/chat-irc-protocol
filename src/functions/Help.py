@@ -11,11 +11,11 @@ class Help:
                    f"\n → {PrettyPrint.pretty_print('/login  -nick -pass', Colors.WARNING)} " +
                    f"\n → {PrettyPrint.pretty_print('/create -room_name -size', Colors.WARNING)}" +
                    f"\n → {PrettyPrint.pretty_print('/join -room_name', Colors.WARNING)}" +
-                   f"\n → {PrettyPrint.pretty_print('//m //-m || //message // -message', Colors.WARNING)}" +
-                   f"\n → {PrettyPrint.pretty_print('//send -path', Colors.WARNING)}" +
+                   f"\n → {PrettyPrint.pretty_print('/m or /message', Colors.WARNING)}" +
+                   #f"\n → {PrettyPrint.pretty_print('//send -path', Colors.WARNING)}" +
                    f"\n → {PrettyPrint.pretty_print('/leave', Colors.WARNING)}" +
                    f"\n → {PrettyPrint.pretty_print('/listrooms', Colors.WARNING)}" +
-                   f"\n → {PrettyPrint.pretty_print('/list_files', Colors.WARNING)}" +
+                   #f"\n → {PrettyPrint.pretty_print('/list_files', Colors.WARNING)}" +
                    f"\n → {PrettyPrint.pretty_print('/list_users', Colors.WARNING)}" +
                    f"\n → {PrettyPrint.pretty_print('/quit', Colors.WARNING)}\n\n")
 

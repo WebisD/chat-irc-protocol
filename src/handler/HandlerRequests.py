@@ -41,8 +41,8 @@ class HandlerRequests(Thread):
                     return
 
                 if self.user.statusRoom != 'lobby':
-                    if request.find("/message") != -1:
-                        Message.response(self.user, self.server, request.replace('/message', ''))
+                    if request.find("/message") != -1 or request.find("/m") != -1:
+                        Message.response(self.user, self.server, request.replace('/message', '').replace('/m', ''))
                     elif request.find("/leave") != -1:
                         self.user = LeaveRoom.response(self.user, self.server)
                     else:
