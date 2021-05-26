@@ -6,7 +6,7 @@ from entities.dtos.Message import Message
 class MessageRepository(RepositoryInterface):
     def __init__(self, db_name: str = "concord.db") -> None:
         super().__init__(db_name)
-        self.table_name: str = 'room'
+        self.table_name: str = 'message'
 
     def find_all_by_id(self, message_id: str) -> Tuple[List[Message], bool]:
         try:
@@ -43,11 +43,11 @@ class MessageRepository(RepositoryInterface):
             result = self.database_handler.fetch_one_result_from_last_query()
 
             if result:
-                room = Message(*result)
-                return room, True
+                message = Message(*result)
+                return message, True
 
         except Exception as exp:
-            print(f"Could not find room with id {message_id}")
+            print(f"Could not find message with id {message_id}")
             print(repr(exp))
 
         return None, False
@@ -59,22 +59,28 @@ class MessageRepository(RepositoryInterface):
                     UPDATE {self.table_name}
                     SET 
                         id = :id,
-                        name = :name,
-                        number_of_participants = :number_of_participants,
-                        max_number_of_participants = :max_number_of_participants
+                        sender_id = :sender_id,
+                        receiver_id = :receiver_id,
+                        content_id = :content_id,
+                        type = :type,
+                        date = :date
                     WHERE id = :userId;
                 ''',
-                args={"userId": message_id, 
-                      "id": new_data.id,
-                      "name": new_data.name,
-                      "number_of_participants": new_data.num_of_participants,
-                      "max_number_of_participants": new_data.max_participants}
+                args={
+                    "userId": message_id,
+                    "id": new_data.id,
+                    "sender_id": new_data.sender_id,
+                    "receiver_id": new_data.receiver_id,
+                    "content_id": new_data.content_id,
+                    "type": new_data.type,
+                    "date": new_data.date
+                }
             )
 
             self.database_handler.save_changes()
 
         except Exception as exp:
-            print(f"Could not update room with id {message_id}")
+            print(f"Could not update message with id {message_id}")
             print(repr(exp))
 
             return False
@@ -94,32 +100,34 @@ class MessageRepository(RepositoryInterface):
             self.database_handler.save_changes()
 
         except Exception as exp:
-            print(f"Could not delete room with id {message_id}")
+            print(f"Could not delete message with id {message_id}")
             print(repr(exp))
 
             return False
 
         return True
 
-    def create(self, room: Message) -> bool:
+    def create(self, message: Message) -> bool:
         try:
             self.database_handler.run_query_with_args(
                 query=f'''
-                        INSERT INTO {self.table_name}(id,name,number_of_participants,max_number_of_participants) 
-                        VALUES (:id,:name,:number_of_participants,:max_number_of_participants)
+                        INSERT INTO {self.table_name}(id,sender_id,receiver_id,content_id,type,date) 
+                        VALUES (:id,:sender_id,:receiver_id,:content_id,:type,:date);
                 ''',
                 args={
-                    "id": room.id,
-                    "name": room.name,
-                    "number_of_participants": room.num_of_participants,
-                    "max_number_of_participants": room.max_participants
+                    "id": message.id,
+                    "sender_id": message.sender_id,
+                    "receiver_id": message.receiver_id,
+                    "content_id": message.content_id,
+                    "type": message.type,
+                    "date": message.date
                 }
             )
 
             self.database_handler.save_changes()
 
         except Exception as exp:
-            print(f"Could not create room {room.__str__()}")
+            print(f"Could not create message {message.__str__()}")
             print(repr(exp))
 
             return False

@@ -60,14 +60,12 @@ class RoomRepository(RepositoryInterface):
                     SET 
                         id = :id,
                         name = :name,
-                        number_of_participants = :number_of_participants,
                         max_number_of_participants = :max_number_of_participants
                     WHERE id = :userId;
                 ''',
                 args={"userId": room_id, 
                       "id": new_data.id,
                       "name": new_data.name,
-                      "number_of_participants": new_data.num_of_participants,
                       "max_number_of_participants": new_data.max_participants}
             )
 
@@ -105,13 +103,12 @@ class RoomRepository(RepositoryInterface):
         try:
             self.database_handler.run_query_with_args(
                 query=f'''
-                        INSERT INTO {self.table_name}(id,name,number_of_participants,max_number_of_participants) 
-                        VALUES (:id,:name,:number_of_participants,:max_number_of_participants)
+                        INSERT INTO {self.table_name}(id,name,max_number_of_participants) 
+                        VALUES (:id,:name,:max_number_of_participants)
                 ''',
                 args={
                     "id": room.id,
                     "name": room.name,
-                    "number_of_participants": room.num_of_participants,
                     "max_number_of_participants": room.max_participants
                 }
             )

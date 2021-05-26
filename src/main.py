@@ -1,8 +1,10 @@
 from entities.Server import startServer
+from repositories.MessageRepository import MessageRepository
 from repositories.RoomRepository import RoomRepository
 from repositories.UserRepository import UserRepository
 from src.entities.dtos.User import User
 from src.entities.dtos.Room import Room
+from src.entities.dtos.Message import Message
 
 
 def main() -> None:
@@ -32,10 +34,11 @@ def main() -> None:
     print(f"result: {result.__str__()}")
 
     # 4: delete user
-    user_repository.delete_by_id(user.nickname)
+    # user_repository.delete_by_id(user.nickname)
 
+    # ----------------------------------------------
     room_repository: RoomRepository = RoomRepository()
-    room: Room = Room("runtimeRoom", "runtimeName", 0, 10)
+    room: Room = Room("runtimeRoom", "runtimeName", 10)
     print(f"room: {room}")
 
     # 1: add to db
@@ -53,7 +56,36 @@ def main() -> None:
     print(f"result: {result.__str__()}")
 
     # 4: delete user
-    # room_repository.delete_by_id(room.room_id)
+    # room_repository.delete_by_id(room.id)"
+
+    # ----------------------------------------------
+    message_repository: MessageRepository = MessageRepository()
+    message: Message = Message(
+        "MSG_2a1s3d12a3ssfhjas",
+        "antuniooh",
+        "margaritas",
+        "WORD_1a23sd23asd4fsfad",
+        1,
+        "2021-05-25 12:30:27"
+    )
+    print(f"message: {message}")
+
+    # 1: add to db
+    message_repository.create(message)
+
+    # 2: find user
+    result, _ = message_repository.find_by_id(message.id)
+    print(f"result: {result.__str__()}")
+
+    # 3: update user
+    message.date = "2021-05-26 01:30:31"
+    message_repository.update_by_id(message.id, message)
+
+    result, _ = message_repository.find_by_id(message.id)
+    print(f"result: {result.__str__()}")
+
+    # 4: delete user
+    # message_repository.delete_by_id(message.id)
 
 
 

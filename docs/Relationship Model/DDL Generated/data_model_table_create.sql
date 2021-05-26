@@ -9,7 +9,6 @@ CREATE TABLE IF NOT EXISTS user (
 CREATE TABLE IF NOT EXISTS room (
     id text NOT NULL,
     name text NOT NULL,
-    number_of_participants integer NOT NULL,
     max_number_of_participants integer NOT NULL,
     PRIMARY KEY (id)
 );
