@@ -1,12 +1,12 @@
 import time
 from threading import Thread
-from commands.Help import Help
-from commands.Login import Login
-from commands.Register import Register
-from commands.CreateRoom import CreateRoom
-from commands.JoinRoom import JoinRoom
-from commands.LeaveRoom import LeaveRoom
-from commands.Message import Message
+from useCases.Help import Help
+from useCases.Login import Login
+from useCases.Register import Register
+from useCases.CreateRoom import CreateRoom
+from useCases.JoinRoom import JoinRoom
+from useCases.LeaveRoom import LeaveRoom
+from useCases.Message import Message
 
 
 class HandlerRequests(Thread):
