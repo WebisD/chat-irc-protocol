@@ -17,6 +17,6 @@ class ListRoom:
             for room in server.registeredRooms:
                 user.connectionSkt.send((" # " + PrettyPrint.pretty_print(str(room.name), Colors.OKCYAN) + "\n").encode())
             user.connectionSkt.send('\n'.encode())
-            return    
-        user.connectionSkt.send("Você já está em uma sala \n\n".encode())
-
+            return
+        user.connectionSkt.send(
+            (PrettyPrint.pretty_print("Você já está em uma sala \n\n", Colors.WARNING_BOLD)).encode())
