@@ -1,5 +1,5 @@
 from socket import *
-from Interface.Colors import Colors
+from util.Colors import Colors
 import random
 
 

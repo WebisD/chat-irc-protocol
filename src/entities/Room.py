@@ -5,8 +5,8 @@ import _thread
 from entities.User import User
 import sys
 import os
-from Interface.PrettyPrint import PrettyPrint
-from Interface.Colors import Colors
+from util.PrettyPrint import PrettyPrint
+from util.Colors import Colors
 
 
 class Room:
