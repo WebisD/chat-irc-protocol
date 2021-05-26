@@ -3,6 +3,7 @@ class Colors:
     OKCYAN = '\033[96m'
     OKGREEN = '\033[92m'
     WARNING = '\033[93m'
+    WARNING_BOLD = '\033[1;33;40'
     FAIL = '\033[91m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'

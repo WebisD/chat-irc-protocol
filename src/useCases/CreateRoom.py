@@ -14,4 +14,5 @@ class CreateRoom:
             user.connectionSkt.send(
                 (PrettyPrint.pretty_print("Room '" + str(name) + "' created!\n\n", Colors.OKGREEN)).encode())
         except:
-           user.connectionSkt.send(("Error in create room " + str(name) + " \n\n").encode())
+            user.connectionSkt.send(
+                (PrettyPrint.pretty_print("Error in create room '" + str(name) + "' \n\n", Colors.FAIL)).encode())

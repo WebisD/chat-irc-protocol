@@ -10,6 +10,9 @@ from useCases.Message import Message
 from useCases.ListRoom import ListRoom
 from useCases.ListUsersRoom import ListUsersRoom
 
+from util.PrettyPrint import PrettyPrint
+from util.Colors import Colors
+
 
 class ControllerRequests(Thread):
     def __init__(self, connectionSocket, server, user):
@@ -37,7 +40,8 @@ class ControllerRequests(Thread):
                         self.user = LeaveRoom.response(self.user, self.server)
                     self.user.toggleLog()
                     self.user = self.user
-                    self.user.connectionSkt.send("Você foi deslogado com sucesso!\n\n".encode())
+                    self.user.connectionSkt.send(
+                        (PrettyPrint.pretty_print("Você foi deslogado com sucesso!\n\n", Colors.OKGREEN)).encode())
                     return
 
                 if self.user.statusRoom != 'lobby':
@@ -64,14 +68,16 @@ class ControllerRequests(Thread):
                     Register.response(self.user, self.server, request.split(' ')[1], request.split(' ')[2],
                                       request.split(' ')[3])
                 elif request in self.commands:
-                    self.user.connectionSkt.send(("Ocorreu um erro ao ler o comando, verifique se você está logado ou "
-                                                  "se os comandos possuem args corretos\n\n").encode())
+                    self.user.connectionSkt.send(
+                        (PrettyPrint.pretty_print("Ocorreu um erro ao ler o comando, verifique se você está logado ou "
+                                                  "se os comandos possuem args corretos\n\n", Colors.FAIL)).encode())
                 else:
                     raise Exception("Command invalid")
 
         except:
-            self.user.connectionSkt.send(("Ocorreu um erro ao ler o comando, verifique se você está logado ou se os "
-                                          "comandos possuem args corretos\n\n").encode())
+            self.user.connectionSkt.send(
+                (PrettyPrint.pretty_print("Ocorreu um erro ao ler o comando, verifique se você está logado ou "
+                                          "se os comandos possuem args corretos\n\n", Colors.FAIL)).encode())
 
     def run(self):
         while True:
