@@ -74,14 +74,14 @@ def main() -> None:
     message_repository.create(message)
 
     # 2: find user
-    result, _ = message_repository.find_by_id(message.id)
+    result, _ = message_repository.find_by_message_id(message.id)
     print(f"result: {result.__str__()}")
 
     # 3: update user
     message.date = "2021-05-26 01:30:31"
-    message_repository.update_by_id(message.id, message)
+    message_repository.update_by_message_id(message.id, message)
 
-    result, _ = message_repository.find_by_id(message.id)
+    result, _ = message_repository.find_by_message_id(message.id)
     print(f"result: {result.__str__()}")
 
     # 4: delete user

@@ -8,7 +8,7 @@ class MessageRepository(RepositoryInterface):
         super().__init__(db_name)
         self.table_name: str = 'message'
 
-    def find_all_by_id(self, message_id: str) -> Tuple[List[Message], bool]:
+    def find_all_by_message_id(self, message_id: str) -> Tuple[List[Message], bool]:
         try:
             self.database_handler.run_query_with_args(
                 f'''
@@ -26,12 +26,58 @@ class MessageRepository(RepositoryInterface):
             return message_list, True
 
         except Exception as exp:
-            print(f"Could not find users with id {message_id}")
+            print(f"Could not find messages with id {message_id}")
             print(repr(exp))
 
         return [], False
 
-    def find_by_id(self, message_id: str) -> Tuple[Message or None, bool]:
+    def find_all_by_sender_id(self, sender_id: str) -> Tuple[List[Message], bool]:
+        try:
+            self.database_handler.run_query_with_args(
+                f'''
+                        SELECT * from {self.table_name} where sender_id = :id
+                    ''',
+                {"id": sender_id}
+            )
+
+            result = self.database_handler.fetch_all_results_from_last_query()
+            message_list: List[Message] = []
+
+            for rows in result:
+                message_list.append(Message(*rows))
+
+            return message_list, True
+
+        except Exception as exp:
+            print(f"Could not find messages with sender_id {sender_id}")
+            print(repr(exp))
+
+        return [], False
+
+    def find_all_by_receiver_id(self, receiver_id: str) -> Tuple[List[Message], bool]:
+        try:
+            self.database_handler.run_query_with_args(
+                f'''
+                        SELECT * from {self.table_name} where receiver_id = :id
+                    ''',
+                {"id": receiver_id}
+            )
+
+            result = self.database_handler.fetch_all_results_from_last_query()
+            message_list: List[Message] = []
+
+            for rows in result:
+                message_list.append(Message(*rows))
+
+            return message_list, True
+
+        except Exception as exp:
+            print(f"Could not find messages with receiver_id {receiver_id}")
+            print(repr(exp))
+
+        return [], False
+
+    def find_by_message_id(self, message_id: str) -> Tuple[Message or None, bool]:
         try:
             self.database_handler.run_query_with_args(
                 f'''
@@ -52,7 +98,49 @@ class MessageRepository(RepositoryInterface):
 
         return None, False
 
-    def update_by_id(self, message_id: str, new_data: Message) -> bool:
+    def find_by_sender_id(self, sender_id: str) -> Tuple[Message or None, bool]:
+        try:
+            self.database_handler.run_query_with_args(
+                f'''
+                    SELECT * from {self.table_name} where sender_id = :id
+                ''',
+                {"id": sender_id}
+            )
+
+            result = self.database_handler.fetch_one_result_from_last_query()
+
+            if result:
+                message = Message(*result)
+                return message, True
+
+        except Exception as exp:
+            print(f"Could not find message with sender_id {sender_id}")
+            print(repr(exp))
+
+        return None, False
+
+    def find_by_receiver_id(self, receiver_id: str) -> Tuple[Message or None, bool]:
+        try:
+            self.database_handler.run_query_with_args(
+                f'''
+                    SELECT * from {self.table_name} where receiver_id = :id
+                ''',
+                {"id": receiver_id}
+            )
+
+            result = self.database_handler.fetch_one_result_from_last_query()
+
+            if result:
+                message = Message(*result)
+                return message, True
+
+        except Exception as exp:
+            print(f"Could not find message with receiver_id {receiver_id}")
+            print(repr(exp))
+
+        return None, False
+
+    def update_by_message_id(self, message_id: str, new_data: Message) -> bool:
         try:
             self.database_handler.run_query_with_args(
                 query=f'''
@@ -64,10 +152,10 @@ class MessageRepository(RepositoryInterface):
                         content_id = :content_id,
                         type = :type,
                         date = :date
-                    WHERE id = :userId;
+                    WHERE id = :search_id;
                 ''',
                 args={
-                    "userId": message_id,
+                    "search_id": message_id,
                     "id": new_data.id,
                     "sender_id": new_data.sender_id,
                     "receiver_id": new_data.receiver_id,
@@ -87,7 +175,77 @@ class MessageRepository(RepositoryInterface):
 
         return True
 
-    def delete_by_id(self, message_id: str) -> bool:
+    def update_by_sender_id(self, sender_id: str, new_data: Message) -> bool:
+        try:
+            self.database_handler.run_query_with_args(
+                query=f'''
+                    UPDATE {self.table_name}
+                    SET 
+                        id = :id,
+                        sender_id = :sender_id,
+                        receiver_id = :receiver_id,
+                        content_id = :content_id,
+                        type = :type,
+                        date = :date
+                    WHERE sender_id = :search_id;
+                ''',
+                args={
+                    "search_id": sender_id,
+                    "id": new_data.id,
+                    "sender_id": new_data.sender_id,
+                    "receiver_id": new_data.receiver_id,
+                    "content_id": new_data.content_id,
+                    "type": new_data.type,
+                    "date": new_data.date
+                }
+            )
+
+            self.database_handler.save_changes()
+
+        except Exception as exp:
+            print(f"Could not update message with sender_id {sender_id}")
+            print(repr(exp))
+
+            return False
+
+        return True
+
+    def update_by_receiver_id(self, receiver_id: str, new_data: Message) -> bool:
+        try:
+            self.database_handler.run_query_with_args(
+                query=f'''
+                    UPDATE {self.table_name}
+                    SET 
+                        id = :id,
+                        sender_id = :sender_id,
+                        receiver_id = :receiver_id,
+                        content_id = :content_id,
+                        type = :type,
+                        date = :date
+                    WHERE receiver_id = :search_id;
+                ''',
+                args={
+                    "search_id": receiver_id,
+                    "id": new_data.id,
+                    "sender_id": new_data.sender_id,
+                    "receiver_id": new_data.receiver_id,
+                    "content_id": new_data.content_id,
+                    "type": new_data.type,
+                    "date": new_data.date
+                }
+            )
+
+            self.database_handler.save_changes()
+
+        except Exception as exp:
+            print(f"Could not update message with receiver_id {receiver_id}")
+            print(repr(exp))
+
+            return False
+
+        return True
+
+    def delete_by_message_id(self, message_id: str) -> bool:
         try:
             self.database_handler.run_query_with_args(
                 query=f'''
@@ -101,6 +259,46 @@ class MessageRepository(RepositoryInterface):
 
         except Exception as exp:
             print(f"Could not delete message with id {message_id}")
+            print(repr(exp))
+
+            return False
+
+        return True
+
+    def delete_by_sender_id(self, sender_id: str) -> bool:
+        try:
+            self.database_handler.run_query_with_args(
+                query=f'''
+                    DELETE FROM {self.table_name}
+                    WHERE sender_id = :id 
+                ''',
+                args={"id": sender_id}
+            )
+
+            self.database_handler.save_changes()
+
+        except Exception as exp:
+            print(f"Could not delete message with sender_id {sender_id}")
+            print(repr(exp))
+
+            return False
+
+        return True
+
+    def delete_by_receiver_id(self, receiver_id: str) -> bool:
+        try:
+            self.database_handler.run_query_with_args(
+                query=f'''
+                    DELETE FROM {self.table_name}
+                    WHERE receiver_id = :id 
+                ''',
+                args={"id": receiver_id}
+            )
+
+            self.database_handler.save_changes()
+
+        except Exception as exp:
+            print(f"Could not delete message with receiver_id {receiver_id}")
             print(repr(exp))
 
             return False

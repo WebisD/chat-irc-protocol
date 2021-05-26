@@ -63,3 +63,6 @@ class DatabaseHandler:
 
     def save_changes(self):
         self.connection.commit()
+
+    def __del__(self):
+        self.connection.close()
