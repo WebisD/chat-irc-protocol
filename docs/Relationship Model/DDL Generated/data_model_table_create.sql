@@ -23,8 +23,8 @@ CREATE TABLE IF NOT EXISTS message (
     type integer NOT NULL,
     date text NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (sender_id) REFERENCES user(nickname),
-    FOREIGN KEY (receiver_id) REFERENCES user(nickname)
+    FOREIGN KEY (sender_id) REFERENCES user(nickname) ON DELETE CASCADE,
+    FOREIGN KEY (receiver_id) REFERENCES user(nickname) ON DELETE CASCADE
 );
 
 CREATE INDEX IF NOT EXISTS idx_message_sender_id ON message
@@ -44,8 +44,8 @@ CREATE TABLE IF NOT EXISTS file (
 CREATE TABLE IF NOT EXISTS room_messages (
     message_id text NOT NULL,
     room_id text NOT NULL,
-    FOREIGN KEY (message_id) REFERENCES message(id),
-    FOREIGN KEY (room_id) REFERENCES room(id)
+    FOREIGN KEY (message_id) REFERENCES message(id) ON DELETE CASCADE,
+    FOREIGN KEY (room_id) REFERENCES room(id) ON DELETE CASCADE
 );
 
 CREATE INDEX IF NOT EXISTS idx_room_messages_message_id ON room_messages
@@ -64,8 +64,8 @@ CREATE TABLE IF NOT EXISTS words (
 CREATE TABLE IF NOT EXISTS participants (
     user_id text NOT NULL,
     room_id text NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES user(nickname),
-    FOREIGN KEY (room_id) REFERENCES room(id)
+    FOREIGN KEY (user_id) REFERENCES user(nickname) ON DELETE CASCADE,
+    FOREIGN KEY (room_id) REFERENCES room(id) ON DELETE CASCADE
 );
 
 CREATE INDEX IF NOT EXISTS idx_participants_user_id ON participants

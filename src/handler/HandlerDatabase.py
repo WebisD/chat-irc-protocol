@@ -1,41 +1,43 @@
 from sqlite3 import *
+from typing import List, Any
 
 
 class DatabaseHandler:
     init: bool = False
 
     def __init__(self,
-                 dbName: str,
-                 sqlFilePath: str = f"../docs/Relationship Model/DDL Generated/data_model_table_create.sql"):
-        self.connection: Connection = connect(dbName)
+                 db_name: str,
+                 sql_file_path: str = f"../docs/Relationship Model/DDL Generated/data_model_table_create.sql"
+                 ):
+        self.connection: Connection = connect(db_name)
         self.cursor: Cursor = self.connection.cursor()
 
-        with open(sqlFilePath, 'r', encoding="utf-8") as file:
+        with open(sql_file_path, 'r', encoding="utf-8") as file:
             if not file:
                 print(f"")
-                raise FileNotFoundError(f"Could not find {sqlFilePath}")
+                raise FileNotFoundError(f"Could not find {sql_file_path}")
 
-            sqlScript: str = "".join(file.readlines())
+            sql_script: str = "".join(file.readlines())
 
-            connection: Connection = connect(dbName)
+            connection: Connection = connect(db_name)
             connection.cursor().executescript(
-                sqlScript
+                sql_script
             )
 
     @staticmethod
-    def initialize(dbName: str, sqlFilePath: str) -> bool:
+    def initialize(db_name: str, sql_file_path: str) -> bool:
         if DatabaseHandler.init:
-            print(f"Database '{dbName}' already initialized")
+            print(f"Database '{db_name}' already initialized")
             return False
 
-        with open(sqlFilePath, 'r', encoding="utf-8") as file:
+        with open(sql_file_path, 'r', encoding="utf-8") as file:
             if not file:
                 print(f"")
                 return False
 
             sqlScript: str = "".join(file.readlines())
 
-            connection: Connection = connect(dbName)
+            connection: Connection = connect(db_name)
             connection.cursor().execute(
                 sqlScript
             )
@@ -44,11 +46,20 @@ class DatabaseHandler:
 
             return True
 
-    def runQuery(self, query: str):
+    def run_query(self, query: str):
         self.cursor.execute(query)
 
-    def runQueryWithArgs(self, query: str, args: dict):
+    def run_query_with_args(self, query: str, args: dict):
         self.cursor.execute(query, args)
 
-    def fetchLastQuery(self):
+    def fetch_all_results_from_last_query(self) -> List[Any]:
         return self.cursor.fetchall()
+
+    def fetch_one_result_from_last_query(self) -> Any:
+        return self.cursor.fetchone()
+
+    def fetch_some_results_from_last_query(self, number_of_queries: int = 5) -> List[Any]:
+        return self.cursor.fetchmany(number_of_queries)
+
+    def save_changes(self):
+        self.connection.commit()

@@ -2,17 +2,20 @@ from handler.HandlerDatabase import DatabaseHandler
 
 
 class RepositoryInterface:
-    def __init__(self, dbName: str = 'concord.db') -> None:
-        self.databaseHandler: DatabaseHandler = DatabaseHandler(dbName)
+    def __init__(self, db_name: str = 'concord.db') -> None:
+        self.database_handler: DatabaseHandler = DatabaseHandler(db_name)
 
-    def findById(self, id: str) -> any:
+    def find_all_by_id(self, subject_id) -> any:
         pass
 
-    def updateById(self, id: str) -> any:
+    def find_by_id(self, subject_id: str) -> any:
         pass
 
-    def deleteById(self, id: str) -> any:
+    def update_by_id(self, subject_id: str, new_subject_data: any) -> any:
         pass
 
-    def create(self, object: any) -> any:
+    def delete_by_id(self, subject_id: str) -> any:
+        pass
+
+    def create(self, subject: any) -> any:
         pass

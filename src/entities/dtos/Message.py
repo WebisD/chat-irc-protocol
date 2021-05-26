@@ -1,7 +1,10 @@
 class Message:
-    def __init__(self, messageId: str, senderId: str, destinationId: str, content: str, contentType: int) -> None:
-        self.messageId: str = messageId
-        self.messageSenderId: str = senderId
-        self.messageDestinationId: str = destinationId
-        self.messageContent: str = content
-        self.messageContentType: int = contentType
+    def __init__(self, message_id: str, sender_id: str, destination_id: str, content: str, content_type: int) -> None:
+        self.id: str = message_id
+        self.sender_id: str = sender_id
+        self.destination_id: str = destination_id
+        self.content: str = content
+        self.content_type: int = content_type
+
+    def __str__(self) -> str:
+        return f"Message({self.id}, {self.sender_id}, {self.destination_id}, {self.content}, {self.content_type})"
