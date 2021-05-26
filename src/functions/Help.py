@@ -1,6 +1,6 @@
 class Help:
     @staticmethod
-    def response(connectionSocket,  server) -> None:
+    def response(activeUser) -> None:
         message = ("\nAvailable commands\n" +
                 "\n/help" +
                 "\n/register -name -pass -nick" +
@@ -14,4 +14,5 @@ class Help:
                 "\n/list_files" +
                 "\n/list_users" + 
                 "\n/quit\n\n")
-        connectionSocket.send(message.encode())
+
+        activeUser.connectionSkt.send(message.encode())

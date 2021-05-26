@@ -2,14 +2,18 @@ from entities.User import User
 
 class JoinRoom:
     @staticmethod
-    def response(connectionSocket, server, roomname) -> None:
+    def response(user, server, roomname) -> None:
         try:
-            user = User("Pedrinh", "pp", "1111", connectionSocket)
-
-            for rooms in server.activeRooms:
-                if rooms.name == roomname:
-                    rooms.add(user)
+            if roomname == '':
+                raise Exception("Invalid command")
+            for room in server.registeredRooms:
+                if room.name == roomname:
+                    if room.add(user):
+                        user.statusRoom = roomname
+                        return user
+            user.connectionSkt.send(("Error in join to room " + str(roomname) + " \n\n").encode())       
+            return user
         except:
-            print("Errot in join client ")
+            print("Error in join client ")
 
         
