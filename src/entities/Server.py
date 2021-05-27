@@ -1,5 +1,13 @@
 from socket import *
 from controllers.ControllerConnections import ControllerConnections
+from repositories.MessageRepository import MessageRepository
+from repositories.ParticipantsRepository import ParticipantsRepository
+from repositories.RoomRepository import RoomRepository
+from repositories.UserRepository import UserRepository
+import src.entities.dtos.User as dto_user
+import src.entities.dtos.Room as dto_room
+import src.entities.dtos.Message as dto_message
+
 
 class Server:
     def __init__(self, ip, port):
@@ -14,8 +22,13 @@ class Server:
         serverSocket = socket(AF_INET, SOCK_STREAM)
         serverSocket.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
         serverSocket.bind((self.ip, self.port))
-        serverSocket.listen(1)    
+        serverSocket.listen(1)
         self.serverSocket = serverSocket
+
+        self.user_repository: UserRepository = UserRepository()
+        self.room_repository: RoomRepository = RoomRepository()
+        self.message_repository: MessageRepository = MessageRepository()
+        self.participants_repository: ParticipantsRepository = ParticipantsRepository()
 
         self.controllerConnections = ControllerConnections(self)
         self.controllerConnections.start()    
