@@ -1,6 +1,7 @@
 import ctypes
 
-class ControllerThread():
+
+class ControllerThread:
     @staticmethod
     def terminate_thread(thread):
         """Terminates a python thread from another thread.

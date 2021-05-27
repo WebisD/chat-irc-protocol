@@ -21,4 +21,4 @@ class Colors:
     ENDC = '\033[0m'
 
     user_colors = [MAGENTA, BLUE, WHITEPINK, ORANGE, SEABLUE, WHITEGREEN,
-                DARKGREEN, GREY]
+                   DARKGREEN, GREY]

@@ -4,22 +4,27 @@ from entities.Room import Room
 from util.PrettyPrint import PrettyPrint
 from util.Colors import Colors
 
+
 class Message:
     @staticmethod
     def response(user, server, args) -> None:
         try:
             if not user.isLogged or user.statusRoom == 'lobby':
-               raise Exception("Invalid command")
-            
+                raise Exception("Invalid command")
+
             message = ""
             for word in args:
-                message+= word + " "
+                message += word + " "
 
             for room in server.registeredRooms:
                 if room.name == user.statusRoom:
                     room.broadcast(message, user)
                     return user
         except:
+            message = ""
+            for word in args:
+                message += word + " "
             user.connectionSkt.send(
-                (PrettyPrint.pretty_print("Error in send message '" + str(args) + ". Are you in the lobby?' \n\n", Colors.FAIL)).encode())
+                (PrettyPrint.pretty_print("Error in send message '" + message + "'. Are you in the lobby?' \n\n",
+                                          Colors.FAIL)).encode())
             return user

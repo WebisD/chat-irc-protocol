@@ -15,6 +15,8 @@ from controllers.ControllerThread import ControllerThread
 from util.PrettyPrint import PrettyPrint
 from util.Colors import Colors
 
+import difflib
+
 
 class ControllerRequests(Thread):
     def __init__(self, server, user):
@@ -33,13 +35,35 @@ class ControllerRequests(Thread):
             print(command)
             print(args)
 
-            self.user = eval(command).response(self.user,self.server, args)
-  
+            self.user = eval(command).response(self.user, self.server, args)
+
         except:
+            message = "Ocorreu um erro ao ler o comando, verifique se você está logado ou " \
+                      "se os comandos possuem args corretos\n"
+
+            logged_commands = Help.logged_commands.keys()
+            not_logged_commands = Help.not_logged_commands.keys()
+            command = (request[0])
+
+            if not self.user.isLogged:
+                # print("oi")
+                if command in logged_commands:
+                    message = "You need to be logged in to use this command\n"
+                else:
+                    match = difflib.get_close_matches(command, not_logged_commands)
+                    if match:
+                        message = f"This command does not exist, did you mean {match[0]}?\n"
+            else:
+                if command in not_logged_commands:
+                    message = "You need to be logged out to execute this command\n"
+                else:
+                    match = difflib.get_close_matches(command, logged_commands)
+                    if match:
+                        message = f"This command does not exist, did you mean {match[0]}?\n"
+
             self.user.connectionSkt.send(
-                (PrettyPrint.pretty_print("Ocorreu um erro ao ler o comando, verifique se você está logado ou "
-                                          "se os comandos possuem args corretos\n\n", Colors.FAIL)).encode())
-            self.user = Help.response(self.user,self.server, [])
+                (PrettyPrint.pretty_print(message, Colors.FAIL)).encode())
+            self.user = Help.response(self.user, self.server, [])
 
     def run(self):
         while True:
@@ -56,14 +80,12 @@ class ControllerRequests(Thread):
             except:
                 self.closeConnection()
 
-        
-
     def closeConnection(self):
         if self.user.statusRoom != 'lobby':
             self.user = Leave.response(self.user, self.server, [])
         if self.user.isLogged:
             self.user = Logout.response(self.user, self.server, [])
-            
+
         print("connection closed")
         self.user.connectionSkt.send((PrettyPrint.pretty_print("Bye bye!\n\n", Colors.OKGREEN)).encode())
         self.user.connectionSkt.close()

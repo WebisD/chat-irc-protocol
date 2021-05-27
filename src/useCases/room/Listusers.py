@@ -32,4 +32,4 @@ class Listusers:
             user.connectionSkt.send(
                 (PrettyPrint.pretty_print("Error in command list \n\n", Colors.FAIL)).encode())
             return user
-        
+

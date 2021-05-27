@@ -1,6 +1,6 @@
-import socket 
-import select 
-import sys 
+import socket
+import select
+import sys
 import _thread
 from entities.User import User
 import sys
@@ -19,9 +19,9 @@ class Room:
             "user": [],
             "txt": []
         }
-    
-    def broadcast(self, message, user): 
-        for client in self.list_of_clients: 
+
+    def broadcast(self, message, user):
+        for client in self.list_of_clients:
             if client.connectionSkt != user.connectionSkt:
                 try:
                     name_color = PrettyPrint.pretty_print(user.nick, user.color)
@@ -30,28 +30,29 @@ class Room:
                     self.messages['user'].append(user.nick)
                     self.messages['txt'].append(message)
 
-                except: 
-                    client.connectionSkt.close() 
-                    self.remove(client) 
+                except:
+                    client.connectionSkt.close()
+                    self.remove(client)
             else:
                 name_color = PrettyPrint.pretty_print(user.nick, user.color)
-                user.connectionSkt.send(('\t\t\t\t\t' + name_color+ ": " + message + "\n").encode())
-    
-    def remove(self, user): 
-        if user in self.list_of_clients: 
-            self.list_of_clients.remove(user) 
+                user.connectionSkt.send(('\r\t\t\t\t\t' + name_color + ": " + message + "\n").encode())
+
+    def remove(self, user):
+        if user in self.list_of_clients:
+            self.list_of_clients.remove(user)
             self.broadcast("Sai da sala " + str(user.name), user)
-            user.connectionSkt.send(("Say goodbye to " + self.name + "!\n\n").encode())  
+            user.connectionSkt.send(("Say goodbye to " + self.name + "!\n\n").encode())
             return True
         return False
-    
-    def add(self, user: User): 
+
+    def add(self, user: User):
         if (len(self.list_of_clients) + 1) <= self.maxUser:
-            if user not in self.list_of_clients: 
+            if user not in self.list_of_clients:
                 self.list_of_clients.append(user)
             print(self.list_of_clients)
-                                        
-            user.connectionSkt.send((PrettyPrint.pretty_print("Welcome " + self.name + "!\n\n", Colors.OKGREEN)).encode()) 
+
+            user.connectionSkt.send(
+                (PrettyPrint.pretty_print("Welcome " + self.name + "!\n\n", Colors.OKGREEN)).encode())
             self.broadcast("Entrei na sala " + str(user.name), user)
-            return True 
+            return True
         return False

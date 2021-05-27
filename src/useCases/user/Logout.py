@@ -5,6 +5,7 @@ from entities.User import User
 from entities.Room import Room
 from random import randint
 
+
 class Logout:
     @staticmethod
     def response(user, server, args) -> None:
@@ -15,16 +16,16 @@ class Logout:
             if user.statusRoom != 'lobby':
                 user = Leave.response(user, server)
             user.toggleLog()
-            
+
             userRandom = User("UserRandom", "random" + str(randint(0, 10000)), "", user.connectionSkt)
 
-            #remove obj with log true and save with log false
+            # remove obj with log true and save with log false
             for users in server.registeredUsers:
                 if users.nick == user.nick:
                     server.activeUsers.remove(users)
                     server.activeUsers.append(user)
 
-            #the obj in server is random now
+            # the obj in server is random now
             for users in server.activeUsers:
                 if users.nick == user.nick:
                     server.activeUsers.remove(users)

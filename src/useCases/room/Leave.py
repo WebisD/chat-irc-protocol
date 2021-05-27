@@ -25,5 +25,3 @@ class Leave:
             user.connectionSkt.send(
                 (PrettyPrint.pretty_print("Error in left room \n\n", Colors.FAIL)).encode())
             return user
-
-        
