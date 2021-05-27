@@ -25,7 +25,7 @@ class Room:
             if client.connectionSkt != user.connectionSkt:
                 try:
                     name_color = PrettyPrint.pretty_print(user.nick, user.color)
-                    message_body = ('\t\t' + name_color + ": " + message + "\n")
+                    message_body = ('\t\t\t\t' + name_color + ": " + message + "\n")
                     client.connectionSkt.send(message_body.encode())
                     self.messages['user'].append(user.nick)
                     self.messages['txt'].append(message)
@@ -34,7 +34,8 @@ class Room:
                     client.connectionSkt.close() 
                     self.remove(client) 
             else:
-                user.connectionSkt.send(("you said: " + message + "\n").encode())
+                name_color = PrettyPrint.pretty_print(user.nick, user.color)
+                user.connectionSkt.send(('\t\t\t\t' + name_color + "you said: " + message + "\n").encode())
     
     def remove(self, user): 
         if user in self.list_of_clients: 

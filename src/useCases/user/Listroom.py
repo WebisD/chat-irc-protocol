@@ -10,7 +10,7 @@ class Listroom:
         try:
             if user.statusRoom != 'lobby':
                 user.connectionSkt.send(
-                (PrettyPrint.pretty_print("Você já está em uma sala \n\n", Colors.WARNING_BOLD)).encode())
+                (PrettyPrint.pretty_print("Você já está em uma sala \n\n", Colors.WARNING)).encode())
                 return user
                 
             if len(server.registeredRooms) == 0:

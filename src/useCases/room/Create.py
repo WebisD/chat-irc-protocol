@@ -23,7 +23,7 @@ class Create:
             for roomRegistered in server.registeredRooms:
                 if roomRegistered.name == room.name:
                     user.connectionSkt.send(
-                        (PrettyPrint.pretty_print("Room '" + str(name) + "' already created!\n\n", Colors.OKGREEN)).encode())
+                        (PrettyPrint.pretty_print("Room '" + str(name) + "' already created!\n\n", Colors.FAIL)).encode())
                     return user
                     
             server.registeredRooms.append(room)
