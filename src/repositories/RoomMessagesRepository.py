@@ -91,7 +91,7 @@ class RoomMessagesRepository(RepositoryInterface):
                 return message, True
 
         except Exception as exp:
-            print(f"Could not find participant with room_id {room_id}")
+            print(f"Could not find room_message with room_id {room_id}")
             print(repr(exp))
 
         return None, False
@@ -145,7 +145,7 @@ class RoomMessagesRepository(RepositoryInterface):
             self.database_handler.save_changes()
 
         except Exception as exp:
-            print(f"Could not update participant with room_id {room_id}")
+            print(f"Could not update room_messages with room_id {room_id}")
             print(repr(exp))
 
             return False
@@ -185,7 +185,7 @@ class RoomMessagesRepository(RepositoryInterface):
             self.database_handler.save_changes()
 
         except Exception as exp:
-            print(f"Could not delete participant with room_id {room_id}")
+            print(f"Could not delete room_messages with room_id {room_id}")
             print(repr(exp))
 
             return False
