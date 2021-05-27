@@ -4,8 +4,16 @@ from util.Colors import Colors
 
 class Login:
     @staticmethod
-    def response(user, server, nick, password) -> None:
+    def response(user, server, args) -> None:
         try:
+            if user.isLogged:
+                user.connectionSkt.send(
+                    (PrettyPrint.pretty_print("Client '" + str(user.nick) + "' already logged\n\n", Colors.FAIL)).encode())
+                raise Exception("Already logged")
+
+            nick = args[0]
+            password = args[1]
+
             if nick == '' or password == '':
                 raise Exception("Invalid command")
             print(f"Chegou {nick, password}")
@@ -48,3 +56,4 @@ class Login:
         except:
             user.connectionSkt.send(
                 (PrettyPrint.pretty_print("Error in login client '" + str(nick) + "'\n\n", Colors.FAIL)).encode())
+            return user

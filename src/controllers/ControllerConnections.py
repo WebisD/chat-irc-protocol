@@ -1,9 +1,5 @@
 from threading import Thread
-import threading
 from controllers.ControllerRequests import ControllerRequests
-import _thread
-import time
-from datetime import datetime, timezone
 from entities.User import User
 from random import randint
 from util.PrettyPrint import PrettyPrint
@@ -34,6 +30,6 @@ class ControllerConnections(Thread):
 
             user = User("UserRandom", "random" + str(randint(0, 10000)), "", connectionSocket)
 
-            self.server.activeUser.append(connectionSocket)
-            t = ControllerRequests(connectionSocket, self.server, user)
-            t.start()
+            self.server.activeUsers.append(user)
+            handlerRequests = ControllerRequests(self.server, user)
+            handlerRequests.start()

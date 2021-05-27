@@ -18,8 +18,9 @@ class Server:
         self.serverSocket = serverSocket
 
         self.controllerConnections = ControllerConnections(self)
-        self.controllerConnections.start()    
-        self.activeUser = [] 
+        self.controllerConnections.start() 
+
+        self.activeUsers = [] 
         self.registeredRooms = [] 
         self.registeredUsers = []
 

@@ -3,16 +3,22 @@ from util.PrettyPrint import PrettyPrint
 from util.Colors import Colors
 
 
-class CreateRoom:
+class Create:
     @staticmethod
-    def response(user, server, name, maxUser) -> None:
+    def response(user, server, args) -> None:
         try:
-            if name == '' or maxUser == '':
-                raise Exception("Invalid command")
+            if user.statusRoom != 'lobby':
+                user.connectionSkt.send(
+                 (PrettyPrint.pretty_print("Você já está em uma sala \n\n", Colors.FAIL)).encode())
+                return user
+            name =args[0] 
+            maxUser = args[1]
             room = Room(name, int(maxUser))
             server.registeredRooms.append(room)
             user.connectionSkt.send(
                 (PrettyPrint.pretty_print("Room '" + str(name) + "' created!\n\n", Colors.OKGREEN)).encode())
+            return user
         except:
             user.connectionSkt.send(
                 (PrettyPrint.pretty_print("Error in create room '" + str(name) + "' \n\n", Colors.FAIL)).encode())
+            return user
