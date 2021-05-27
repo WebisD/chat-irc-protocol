@@ -25,7 +25,7 @@ class Room:
             if client.connectionSkt != user.connectionSkt:
                 try:
                     name_color = PrettyPrint.pretty_print(user.nick, user.color)
-                    message_body = (name_color + ": " + message + "\n").rjust(self.width)
+                    message_body = ('\t\t' + name_color + ": " + message + "\n")
                     client.connectionSkt.send(message_body.encode())
                     self.messages['user'].append(user.nick)
                     self.messages['txt'].append(message)

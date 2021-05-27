@@ -18,6 +18,7 @@ class Message:
             for room in server.registeredRooms:
                 if room.name == user.statusRoom:
                     room.broadcast(message, user)
+                    return user
         except:
             user.connectionSkt.send(
                 (PrettyPrint.pretty_print("Error in send message '" + str(args) + ". Are you in the lobby?' \n\n", Colors.FAIL)).encode())

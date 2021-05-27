@@ -7,7 +7,6 @@ class Register:
     @staticmethod
     def response(user, server, args) -> None:
         try:
-            print(args)
             if user.isLogged:
                raise Exception("Already logged")
             name = args[0] 
