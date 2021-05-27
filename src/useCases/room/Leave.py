@@ -10,6 +10,8 @@ class Leave:
     def response(user, server, args) -> None:
         try:
             if not user.isLogged or user.statusRoom == 'lobby':
+                user.connectionSkt.send(
+                 (PrettyPrint.pretty_print("Você não está em nenhuma sala \n\n", Colors.FAIL)).encode())
                 raise Exception("Invalid command")
 
             for room in server.registeredRooms:

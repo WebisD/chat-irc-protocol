@@ -12,11 +12,18 @@ class Listusers:
             if user.statusRoom == 'lobby':
                 user.connectionSkt.send(
                 (PrettyPrint.pretty_print("Você não está em nenhuma sala \n\n", Colors.FAIL)).encode())
+
+                user.connectionSkt.send(("Os usuários no " + PrettyPrint.pretty_print(str("lobby"), Colors.UNDERLINE) + " são: \n\n").encode())
+
+                for users in server.activeUsers:
+                    if users.statusRoom == "lobby":
+                        user.connectionSkt.send((" • " + PrettyPrint.pretty_print(str(users.nick), Colors.WARNING) + "\n").encode())
+                    user.connectionSkt.send("\n".encode())
                 return user
 
             for room in server.registeredRooms:
                 if room.name == user.statusRoom:
-                    user.connectionSkt.send(("Os usuários na sala " + PrettyPrint.pretty_print(str(room.name), Colors.UNDERLINE) + "são: \n\n").encode())
+                    user.connectionSkt.send(("Os usuários na sala " + PrettyPrint.pretty_print(str(room.name), Colors.UNDERLINE) + " são: \n\n").encode())
                     for users in room.list_of_clients:
                         user.connectionSkt.send((" • " + PrettyPrint.pretty_print(str(users.nick), Colors.WARNING) + "\n").encode())
                     user.connectionSkt.send("\n".encode())

@@ -1,6 +1,7 @@
 from util.PrettyPrint import PrettyPrint
 from util.Colors import Colors
-
+from entities.User import User
+from entities.Room import Room
 
 class Login:
     @staticmethod
@@ -16,7 +17,6 @@ class Login:
 
             if nick == '' or password == '':
                 raise Exception("Invalid command")
-            print(f"Chegou {nick, password}")
             nick_ok = False
             pass_ok = False
             logged_ok = False
@@ -38,6 +38,12 @@ class Login:
             if nick_ok and pass_ok and not logged_ok:
                 user_found.toggleLog()
                 user_found.setSocket(user.connectionSkt)
+
+                for users in server.activeUsers:
+                    if users.nick == user.nick:
+                        server.activeUsers.remove(users)
+                        server.activeUsers.append(user_found)
+                        
                 user.connectionSkt.send(
                     (PrettyPrint.pretty_print("Client " + str(nick) + " successfully log\n\n", Colors.OKGREEN)).encode())
                 return user_found

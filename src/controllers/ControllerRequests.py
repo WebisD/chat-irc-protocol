@@ -60,11 +60,13 @@ class ControllerRequests(Thread):
 
     def closeConnection(self):
         if self.user.statusRoom != 'lobby':
-            self.user = LeaveRoom.response(self.user, self.server)
-
+            self.user = Leave.response(self.user, self.server, [])
+        if self.user.isLogged:
+            self.user = Logout.response(self.user, self.server, [])
+            
         print("connection closed")
         self.user.connectionSkt.send((PrettyPrint.pretty_print("Bye bye!\n\n", Colors.OKGREEN)).encode())
         self.user.connectionSkt.close()
 
-        self.server.activeUser.remove(self.user)
+        self.server.activeUsers.remove(self.user)
         ControllerThread.terminate_thread(self)
