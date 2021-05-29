@@ -1,4 +1,4 @@
-from entities.ent_server import start_server
+from entities import *
 
 
 def main() -> None:

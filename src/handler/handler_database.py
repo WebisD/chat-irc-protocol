@@ -43,11 +43,11 @@ class DatabaseHandler:
                 print(f"")
                 return False
 
-            sqlScript: str = "".join(file.readlines())
+            sql_script: str = "".join(file.readlines())
 
             connection: Connection = connect(db_name)
             connection.cursor().execute(
-                sqlScript
+                sql_script
             )
 
             DatabaseHandler.init = True

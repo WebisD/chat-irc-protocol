@@ -1,8 +1,8 @@
 import sys
-from entities import *
+import entities as ent
+import dtos as dto
 from util.PrettyPrint import PrettyPrint
 from util.Colors import Colors
-import dtos.dto_user as dtoUser
 
 __all__ = ['Register']
 
@@ -14,7 +14,7 @@ class Register:
             if name == '' or nick == '' or password == '':
                 raise Exception("Invalid command")
 
-            user = User(name, nick, password, user.connection_socket)
+            user = ent.User(name, nick, password, user.connection_socket)
 
             for userRegistered in server.registered_users:
                 if userRegistered.nick == nick:
@@ -28,7 +28,7 @@ class Register:
                     return None
 
             server.registered_users.append(user)
-            server.user_repository.put(dtoUser.User(user.nick, user.name, user.password))
+            server.user_repository.put(dto.User(user.nick, user.name, user.password))
 
             user.connection_socket.send(
                 (PrettyPrint.pretty_print("Client " + str(name) + " successfully registered \n\n",

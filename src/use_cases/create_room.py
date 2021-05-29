@@ -1,5 +1,5 @@
 import sys
-
+from dtos import dto_room as dtr
 from entities import *
 from util.PrettyPrint import PrettyPrint
 from util.Colors import Colors
@@ -14,6 +14,7 @@ class CreateRoom:
             if name == '' or max_user == '':
                 raise Exception("Invalid command")
             room = Room(name, int(max_user))
+            server.room_repository.put(dtr.Room(room_id=room.id, name=name, max_participants=max_user))
             server.registered_rooms.append(room)
             user.connection_socket.send(
                 (PrettyPrint.pretty_print("Room '" + str(name) + "' created!\n\n", Colors.OKGREEN)).encode())

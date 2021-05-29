@@ -2,6 +2,7 @@ import socket
 import select 
 import sys 
 import _thread
+import uuid
 from typing import List
 
 from entities.ent_user import User
@@ -13,7 +14,7 @@ __all__ = ['Room']
 
 
 class Room:
-    def __init__(self, name, max_user: int, room_id: str = None):
+    def __init__(self, name, max_user: int, room_id: str = uuid.uuid4().__str__()):
         self.id = room_id
         self.width = os.get_terminal_size().columns
         self.name: str = name

@@ -12,31 +12,36 @@ class Login:
             if nick == '' or password == '':
                 raise Exception("Invalid command")
 
-            print(f"Chegou {nick, password}")
-
             nick_ok = False
             pass_ok = False
             logged_ok = False
             user_found = None
 
-            for userRegistered in server.registered_users:
-                if userRegistered.nick == nick and userRegistered.password == password and not userRegistered.is_logged:
-                    user_found = userRegistered
+            for user_registered in server.registered_users:
+                if user_registered.nick == nick\
+                        and user_registered.password == password\
+                        and not user_registered.is_logged:
+                    user_found = user_registered
                     nick_ok = True
                     pass_ok = True
+                    user.nick = user_registered.nick
+                    user.name = user_registered.name
+                    user.password = user_registered.password
+                    user.toggle_log()
                     break
-                if userRegistered.nick == nick:
+                if user_registered.nick == nick:
                     nick_ok = True
-                    if userRegistered.is_logged:
+                    if user_registered.is_logged:
                         logged_ok = True
-                if userRegistered.password == password:
+                if user_registered.password == password:
                     pass_ok = True
 
             if nick_ok and pass_ok and not logged_ok:
-                user_found.toggleLog()
-                user_found.setSocket(user.connection_socket)
+                user_found.toggle_log()
+                user_found.set_socket(user.connection_socket)
                 user.connection_socket.send(
-                    (PrettyPrint.pretty_print("Client " + str(nick) + " successfully log\n\n", Colors.OKGREEN)).encode())
+                    (PrettyPrint.pretty_print("Client " + str(nick) + " successfully log\n\n",
+                                              Colors.OKGREEN)).encode())
                 return user_found
             elif logged_ok:
                 user.connection_socket.send(

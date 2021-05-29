@@ -1,3 +1,6 @@
+__all__ = ['RoomMessages']
+
+
 class RoomMessages:
     def __init__(self, message_id: str, room_id: str) -> None:
         self.message_id: str = message_id

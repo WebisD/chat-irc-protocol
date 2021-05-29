@@ -5,40 +5,42 @@ __all__ = ['HandlerRequests']
 
 
 class HandlerRequests(Thread):
-    def __init__(self, connectionSocket, server):
+    def __init__(self, connection_socket, server):
         Thread.__init__(self)
-        self.connectionSocket = connectionSocket
+        self.connection_socket = connection_socket
         self.server = server
 
-    def parseRequest(self, request):
+    def parse_request(self, request):
         print(request)
-        request = request.replace('\n', '').replace('\r','')
+
+        request = request.replace('\n', '').replace('\r', '')
         if request.find("/help") != -1:
-            Help.response(self.connectionSocket, self.server)
+            Help.response(self.connection_socket)
         elif request.find("/login") != -1:
-            Login.response(self.connectionSocket, self.server, request.split(' ')[1], request.split(' ')[2])
+            Login.response(self.connection_socket, self.server, request.split(' ')[1], request.split(' ')[2])
         elif request.find("/register") != -1:
-            Register.response(self.connectionSocket, self.server, request.split(' ')[1], request.split(' ')[2],  request.split(' ')[3])
+            Register.response(self.connection_socket, self.server, request.split(' ')[1], request.split(' ')[2], request.split(' ')[3])
         elif request.find("/create") != -1:
-            CreateRoom.response(self.connectionSocket, self.server, request.split(' ')[1], request.split(' ')[2])
+            CreateRoom.response(self.connection_socket, self.server, request.split(' ')[1], request.split(' ')[2])
         elif request.find("/join") != -1:
-            JoinRoom.response(self.connectionSocket, self.server, request.split(' ')[1])
+            JoinRoom.response(self.connection_socket, self.server, request.split(' ')[1])
         elif request.find("/message") != -1:
             print(request)
-            Message.response(self.connectionSocket, self.server, request.split(' ')[1])
+            Message.response(self.connection_socket, self.server, request.split(' ')[1])
         
     def run(self):
         while True:
-            request = self.connectionSocket.recv(1024).decode()
+            request = self.connection_socket.recv(1024).decode()
             print(request)
             if not request: 
                 break
             else:
                 if request.find("/exit") != -1:
+                    # self.server.active_user
                     print("connection closed")
-                    self.connectionSocket.close()
+                    self.connection_socket.close()
                     break
                 else:
-                    self.parseRequest(request)
+                    self.parse_request(request)
 
 

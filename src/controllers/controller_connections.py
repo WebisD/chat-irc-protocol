@@ -1,11 +1,12 @@
-from threading import Thread
-from controllers.controller_requests import ControllerRequests
-from entities.ent_user import User
-from random import randint
-from util.PrettyPrint import PrettyPrint
-from util.Colors import Colors
 import os
 import shutil
+from threading import Thread
+from entities.resources import *
+from util.PrettyPrint import PrettyPrint
+from util.Colors import Colors
+from controllers import *
+
+__all__ = ['ControllerConnections']
 
 
 class ControllerConnections(Thread):
@@ -28,8 +29,7 @@ class ControllerConnections(Thread):
                                      f"{PrettyPrint.pretty_print('/register <name> <user> <passw>', Colors.WARNING)}"
                                      f"\n\n").encode())
 
-            user = User("UserRandom", "random" + str(randint(0, 10000)), "", connection_socket)
-
+            user = UserFactory.create(connection_socket=connection_socket)
             self.server.active_user.append(connection_socket)
             thread = ControllerRequests(connection_socket, self.server, user)
             thread.start()

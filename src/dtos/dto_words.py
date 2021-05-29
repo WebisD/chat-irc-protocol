@@ -1,3 +1,6 @@
+__all__ = ['Words']
+
+
 class Words:
     def __init__(self, id: str, content: str) -> None:
         self.id: str = id

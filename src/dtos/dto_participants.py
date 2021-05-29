@@ -1,3 +1,6 @@
+__all__ = ['Participants']
+
+
 class Participants:
     def __init__(self, nickname: str, room_id: str) -> None:
         self.user_nickname: str = nickname

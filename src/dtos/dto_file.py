@@ -1,3 +1,6 @@
+__all__ = ['File']
+
+
 class File:
     def __init__(self, id: str, name: str, content: bytearray) -> None:
         self.id: str = id

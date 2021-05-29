@@ -1,3 +1,6 @@
+__all__ = ['User']
+
+
 class User:
     def __init__(self, nickname: str, name: str, password: str) -> None:
         self.nickname: str = nickname

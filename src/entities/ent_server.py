@@ -1,10 +1,10 @@
 from socket import *
 from typing import List
-from controllers.controller_connections import ControllerConnections
+from controllers import *
 from entities import *
 from repositories import *
 
-__all__ = ['Server']
+__all__ = ['Server', 'start_server']
 
 
 class Server:
@@ -52,7 +52,6 @@ class Server:
 
         if registered_users is not None:
             for idx, user in enumerate(registered_users):
-                print(user)
                 registered_users[idx] = User(user.name, user.nickname, user.password)
         else:
             registered_users = []

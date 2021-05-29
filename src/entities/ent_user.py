@@ -22,11 +22,14 @@ class User:
         self.connection_socket = connection_socket
 
     def __str__(self):
-        return ("{\n" +
+        return (
+                "{" +
                 "\n name: " + str(self.name) +
                 "\n nick: " + str(self.nick) +
                 "\n password: " + str(self.password) +
                 "\n connectionSkt: " + str(self.connection_socket) +
                 "\n statusRoom: " + str(self.status_room) +
                 "\n isLogged: " + str(self.is_logged) +
-                "\n}")
+                "\n"
+                "}"
+        )
