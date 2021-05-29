@@ -78,6 +78,9 @@ class ControllerRequests(Thread):
                 self.closeConnection()
 
     def closeConnection(self):
+        """ Calls the function that instantiates a server
+        :returns: None
+        """
         if self.user.statusRoom != 'lobby':
             self.user = Leave.response(self.user, self.server, [])
         if self.user.isLogged:

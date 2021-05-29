@@ -10,12 +10,18 @@ import shutil
 
 class ControllerConnections(Thread):
     def __init__(self, server):
+        """ Calls the function that instantiates a server
+        :returns: None
+        """
         Thread.__init__(self)
         self.server = server
         self.width = os.get_terminal_size().columns
         self.terminal_size = shutil.get_terminal_size(fallback=(120, 50))
 
     def run(self):
+        """ Calls the function that instantiates a server
+        :returns: None
+        """
         while True:
             connectionSocket, addr = self.server.serverSocket.accept()
             connectionSocket.send(('\n' +
