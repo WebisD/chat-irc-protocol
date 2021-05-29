@@ -1,2 +1,7 @@
 .idea
+venv
+identifier.sqlite
+*/pyvenv.cfg
+*/*/__pycache__/*
+*/*/*/__pycache__/*
 teste.py
