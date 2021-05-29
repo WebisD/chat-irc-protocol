@@ -7,11 +7,12 @@ class Register:
     @staticmethod
     def response(user, server, args) -> None:
         try:
+            name = args[0]
+            nick = args[1]
+            password = args[2]
+
             if user.isLogged:
                raise Exception("Already logged")
-            name = args[0] 
-            nick = args[1] 
-            password = args[2]
 
             if name == '' or nick == '' or password == '':
                 raise Exception("Invalid command")
@@ -30,4 +31,5 @@ class Register:
         except:
             user.connectionSkt.send(
                 (PrettyPrint.pretty_print("Error in register client '" + str(name) + "'\n\n", Colors.FAIL)).encode())
+
             return user

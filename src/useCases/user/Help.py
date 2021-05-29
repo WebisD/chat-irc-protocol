@@ -8,11 +8,12 @@ class Help:
         '/create': '-room_name -size',
         '/listroom': None,
         '/join': '-room_name',
-        '/message': None,
+        '/message': '-your_message',
         '/listusers': None,
         '/leave': None,
         '/logout': None,
         '/quit': None,
+        '/privatemessage': '-receiver_user -your_message'
     }
     not_logged_commands = {
         '/help': None,
@@ -20,21 +21,25 @@ class Help:
         '/login':  '-nick -pass',
         '/quit': None,
     }
+    acronyms = {
+        '/listroom': '/lr',
+        '/listusers': '/lu',
+        '/message': '/m',
+        '/privatemessage': '/pm',
+    }
 
     @staticmethod
     def response(activeUser, server, args) -> None:
         try:
             message = "\n Available commands"
-            list_commands = {}
-
-            if activeUser.isLogged:
-                list_commands = Help.logged_commands
-            else:
-                list_commands = Help.not_logged_commands
+            list_commands = Help.logged_commands if activeUser.isLogged else Help.not_logged_commands
 
             for _command, _args in list_commands.items():
                 full_command = _command + ' ' + _args if _args else _command
                 message += f"\n → {PrettyPrint.pretty_print(full_command, Colors.WARNING)}"
+                if _command in Help.acronyms:
+                    full_command = Help.acronyms[_command] + ' ' + _args if _args else Help.acronyms[_command]
+                    message += f" | {PrettyPrint.pretty_print(full_command, Colors.WARNING)}"
 
             message += '\n\n'
 
@@ -45,3 +50,9 @@ class Help:
             activeUser.connectionSkt.send(
                 (PrettyPrint.pretty_print("Error in command help \n\n", Colors.FAIL)).encode())
             return activeUser
+
+    @staticmethod
+    def get_full_command(value):
+        for command, abv in Help.acronyms.items():
+            if abv == value:
+                return command

@@ -12,19 +12,16 @@ class Message:
             if not user.isLogged or user.statusRoom == 'lobby':
                 raise Exception("Invalid command")
 
-            message = ""
-            for word in args:
-                message += word + " "
+            message = " ".join(args)
 
             for room in server.registeredRooms:
                 if room.name == user.statusRoom:
                     room.broadcast(message, user)
                     return user
         except:
-            message = ""
-            for word in args:
-                message += word + " "
+            message = " ".join(args)
+
             user.connectionSkt.send(
-                (PrettyPrint.pretty_print("Error in send message '" + message + "'. Are you in the lobby?' \n\n",
+                (PrettyPrint.pretty_print("Error in send message '" + message + "'. Are you logged?' \n\n",
                                           Colors.FAIL)).encode())
             return user

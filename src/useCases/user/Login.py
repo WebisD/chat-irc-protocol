@@ -3,6 +3,7 @@ from util.Colors import Colors
 from entities.User import User
 from entities.Room import Room
 
+
 class Login:
     @staticmethod
     def response(user, server, args) -> None:

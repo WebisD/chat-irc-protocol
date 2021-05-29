@@ -9,6 +9,7 @@ from useCases.room.Leave import Leave
 from useCases.user.Message import Message
 from useCases.user.Listroom import Listroom
 from useCases.room.Listusers import Listusers
+from useCases.user.Privatemessage import Privatemessage
 
 from controllers.ControllerThread import ControllerThread
 
@@ -28,7 +29,13 @@ class ControllerRequests(Thread):
         try:
             print(self.user.toString())
             request = request.replace('\n', '').replace('\r', '').split(' ')
+
+            # Check if it's an abbreviation
+            if (request[0]).lower() in Help.acronyms.values():
+                request[0] = Help.get_full_command((request[0]).lower())
+
             command = (request[0]).title().replace('/', '')
+
             args = []
             if len(request) > 1:
                 args = request[1:]
@@ -37,33 +44,23 @@ class ControllerRequests(Thread):
 
             self.user = eval(command).response(self.user, self.server, args)
 
-        except:
-            message = "Ocorreu um erro ao ler o comando, verifique se você está logado ou " \
-                      "se os comandos possuem args corretos\n"
+        except NameError:
+            message = "This command does not exist. Type /help to see the commands\n\n"
 
             logged_commands = Help.logged_commands.keys()
             not_logged_commands = Help.not_logged_commands.keys()
+
             command = (request[0])
 
-            if not self.user.isLogged:
-                # print("oi")
-                if command in logged_commands:
-                    message = "You need to be logged in to use this command\n"
-                else:
-                    match = difflib.get_close_matches(command, not_logged_commands)
-                    if match:
-                        message = f"This command does not exist, did you mean {match[0]}?\n"
-            else:
-                if command in not_logged_commands:
-                    message = "You need to be logged out to execute this command\n"
-                else:
-                    match = difflib.get_close_matches(command, logged_commands)
-                    if match:
-                        message = f"This command does not exist, did you mean {match[0]}?\n"
+            match = difflib.get_close_matches(command, not_logged_commands) if not self.user.isLogged \
+                else difflib.get_close_matches(command, logged_commands)
+
+            if match:
+                message = f"This command does not exist, did you mean {match[0]}?\n\n"
 
             self.user.connectionSkt.send(
                 (PrettyPrint.pretty_print(message, Colors.FAIL)).encode())
-            self.user = Help.response(self.user, self.server, [])
+            # self.user = Help.response(self.user, self.server, [])
 
     def run(self):
         while True:
