@@ -38,6 +38,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="PrettyPrint module" href="PrettyPrint.html" />
     <link rel="prev" title="Room module" href="Room.html" /> 
 </head>
 
@@ -93,6 +94,19 @@
 <li class="toctree-l2"><a class="reference internal" href="Server.html">Server module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Room.html">Room module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">User module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PrettyPrint.html">PrettyPrint module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Colors.html">Colors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Create.html">Create module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Join.html">Join module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leave.html">Leave module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListUsers.html">ListUsers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Help.html">Help module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListRoom.html">ListRoom module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logout.html">Logout module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Login.html">Login module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Message.html">Message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Register.html">Register module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PrivateMessage.html">PrivateMessage module</a></li>
 </ul>
 </li>
 </ul>
@@ -170,20 +184,28 @@
 <dt id="entities.User.User">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">entities.User.</span></code><code class="sig-name descname"><span class="pre">User</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nick</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connectionSkt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#entities.User.User" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class of User in server</p>
 <dl class="py method">
 <dt id="entities.User.User.setSocket">
-<code class="sig-name descname"><span class="pre">setSocket</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connectionSkt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#entities.User.User.setSocket" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">setSocket</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connectionSkt</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#entities.User.User.setSocket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the user socket
+:param connectionSkt: socket of user connection
+:returns: None</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="entities.User.User.toString">
-<code class="sig-name descname"><span class="pre">toString</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#entities.User.User.toString" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">toString</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#entities.User.User.toString" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return params of user as string
+:returns: user params</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="entities.User.User.toggleLog">
-<code class="sig-name descname"><span class="pre">toggleLog</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#entities.User.User.toggleLog" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">toggleLog</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#entities.User.User.toggleLog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invert the status of login
+:returns: None</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -195,6 +217,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="PrettyPrint.html" class="btn btn-neutral float-right" title="PrettyPrint module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="Room.html" class="btn btn-neutral float-left" title="Room module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

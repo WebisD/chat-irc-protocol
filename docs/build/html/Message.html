@@ -38,7 +38,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="PrivateMessage module" href="PrivateMessage.html" />
+    <link rel="next" title="Register module" href="Register.html" />
     <link rel="prev" title="Login module" href="Login.html" /> 
 </head>
 
@@ -105,8 +105,8 @@
 <li class="toctree-l2"><a class="reference internal" href="Logout.html">Logout module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Login.html">Login module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Message module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PrivateMessage.html">PrivateMessage module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Register.html">Register module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PrivateMessage.html">PrivateMessage module</a></li>
 </ul>
 </li>
 </ul>
@@ -184,10 +184,15 @@
 <dt id="useCases.user.Message.Message">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">useCases.user.Message.</span></code><code class="sig-name descname"><span class="pre">Message</span></code><a class="headerlink" href="#useCases.user.Message.Message" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to send a message of the user in the room</p>
 <dl class="py method">
 <dt id="useCases.user.Message.Message.response">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">response</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#useCases.user.Message.Message.response" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">response</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="User.html#entities.User.User" title="entities.User.User"><span class="pre">entities.User.User</span></a><a class="headerlink" href="#useCases.user.Message.Message.response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the broadcast in the rooms, basically send the message of the user to anothers in the room
+:param server: IP where the server will be allocated
+:param args: args to send the message
+:returns: user obj with the changes</p>
+</dd></dl>
 
 </dd></dl>
 
@@ -199,7 +204,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="PrivateMessage.html" class="btn btn-neutral float-right" title="PrivateMessage module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Register.html" class="btn btn-neutral float-right" title="Register module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="Login.html" class="btn btn-neutral float-left" title="Login module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

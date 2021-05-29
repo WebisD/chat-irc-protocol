@@ -105,8 +105,8 @@
 <li class="toctree-l2"><a class="reference internal" href="Logout.html">Logout module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Login.html">Login module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Message.html">Message module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PrivateMessage.html">PrivateMessage module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Register.html">Register module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PrivateMessage.html">PrivateMessage module</a></li>
 </ul>
 </li>
 </ul>
@@ -184,10 +184,15 @@
 <dt id="useCases.room.Listusers.Listusers">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">useCases.room.Listusers.</span></code><code class="sig-name descname"><span class="pre">Listusers</span></code><a class="headerlink" href="#useCases.room.Listusers.Listusers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to listusers in the room or the lobby</p>
 <dl class="py method">
 <dt id="useCases.room.Listusers.Listusers.response">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">response</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#useCases.room.Listusers.Listusers.response" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">response</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="User.html#entities.User.User" title="entities.User.User"><span class="pre">entities.User.User</span></a><a class="headerlink" href="#useCases.room.Listusers.Listusers.response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the listing of users in room or the lobby
+:param server: IP where the server will be allocated
+:param args: args to list the users
+:returns: user obj with the changes</p>
+</dd></dl>
 
 </dd></dl>
 

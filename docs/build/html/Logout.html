@@ -105,8 +105,8 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Logout module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Login.html">Login module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Message.html">Message module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="PrivateMessage.html">PrivateMessage module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Register.html">Register module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PrivateMessage.html">PrivateMessage module</a></li>
 </ul>
 </li>
 </ul>
@@ -184,10 +184,15 @@
 <dt id="useCases.user.Logout.Logout">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">useCases.user.Logout.</span></code><code class="sig-name descname"><span class="pre">Logout</span></code><a class="headerlink" href="#useCases.user.Logout.Logout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to log out the user in the server</p>
 <dl class="py method">
 <dt id="useCases.user.Logout.Logout.response">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">response</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#useCases.user.Logout.Logout.response" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">response</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="User.html#entities.User.User" title="entities.User.User"><span class="pre">entities.User.User</span></a><a class="headerlink" href="#useCases.user.Logout.Logout.response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the logout of user in the server
+:param server: IP where the server will be allocated
+:param args: args to logout the user
+:returns: user obj with the changes</p>
+</dd></dl>
 
 </dd></dl>
 

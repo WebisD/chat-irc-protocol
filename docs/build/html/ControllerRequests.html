@@ -38,6 +38,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="ControllerThread module" href="ControllerThread.html" />
     <link rel="prev" title="ControllerConnections module" href="ControllerConnections.html" /> 
 </head>
 
@@ -89,6 +90,23 @@
 <li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ControllerConnections.html">ControllerConnections module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">ControllerRequests module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ControllerThread.html">ControllerThread module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server.html">Server module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Room.html">Room module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User.html">User module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PrettyPrint.html">PrettyPrint module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Colors.html">Colors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Create.html">Create module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Join.html">Join module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leave.html">Leave module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListUsers.html">ListUsers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Help.html">Help module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListRoom.html">ListRoom module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logout.html">Logout module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Login.html">Login module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Message.html">Message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Register.html">Register module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PrivateMessage.html">PrivateMessage module</a></li>
 </ul>
 </li>
 </ul>
@@ -166,26 +184,27 @@
 <dt id="controllers.ControllerRequests.ControllerRequests">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">controllers.ControllerRequests.</span></code><code class="sig-name descname"><span class="pre">ControllerRequests</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#controllers.ControllerRequests.ControllerRequests" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Thread</span></code></p>
+<p>Class of thread responsible for handling incoming requests of the user</p>
 <dl class="py method">
 <dt id="controllers.ControllerRequests.ControllerRequests.closeConnection">
-<code class="sig-name descname"><span class="pre">closeConnection</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#controllers.ControllerRequests.ControllerRequests.closeConnection" title="Permalink to this definition">¶</a></dt>
-<dd><p>Calls the function that instantiates a server
+<code class="sig-name descname"><span class="pre">closeConnection</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#controllers.ControllerRequests.ControllerRequests.closeConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Responsible for stop the thread
 :returns: None</p>
 </dd></dl>
 
 <dl class="py method">
 <dt id="controllers.ControllerRequests.ControllerRequests.parseRequest">
-<code class="sig-name descname"><span class="pre">parseRequest</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#controllers.ControllerRequests.ControllerRequests.parseRequest" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">parseRequest</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#controllers.ControllerRequests.ControllerRequests.parseRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>Responsible for checking the request type and calling the appropriate method
+:param request: A Request object
+:returns: None</p>
+</dd></dl>
 
 <dl class="py method">
 <dt id="controllers.ControllerRequests.ControllerRequests.run">
-<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#controllers.ControllerRequests.ControllerRequests.run" title="Permalink to this definition">¶</a></dt>
-<dd><p>Method representing the thread’s activity.</p>
-<p>You may override this method in a subclass. The standard run() method
-invokes the callable object passed to the object’s constructor as the
-target argument, if any, with sequential and keyword arguments taken
-from the args and kwargs arguments, respectively.</p>
+<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#controllers.ControllerRequests.ControllerRequests.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Responsible for running the thread
+:returns: None</p>
 </dd></dl>
 
 </dd></dl>
@@ -198,6 +217,7 @@ from the args and kwargs arguments, respectively.</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="ControllerThread.html" class="btn btn-neutral float-right" title="ControllerThread module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="ControllerConnections.html" class="btn btn-neutral float-left" title="ControllerConnections module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
