@@ -1,4 +1,4 @@
-from entities.Server import startServer
+from entities.ent_server import start_server
 
 
 def main() -> None:
@@ -7,7 +7,7 @@ def main() -> None:
     :return: None
 
     """
-    startServer()
+    start_server()
 
 
 if __name__ == "__main__":
