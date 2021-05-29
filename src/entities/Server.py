@@ -1,5 +1,5 @@
 from socket import *
-from handler.HandlerConnections import HandlerConnections
+from controllers.ControllerConnections import ControllerConnections
 
 class Server:
     def __init__(self, ip, port):
@@ -17,9 +17,10 @@ class Server:
         serverSocket.listen(1)    
         self.serverSocket = serverSocket
 
-        self.handlerConnections = HandlerConnections(self)
-        self.handlerConnections.start()    
-        self.activeUser = [] 
+        self.controllerConnections = ControllerConnections(self)
+        self.controllerConnections.start() 
+
+        self.activeUsers = [] 
         self.registeredRooms = [] 
         self.registeredUsers = []
 
