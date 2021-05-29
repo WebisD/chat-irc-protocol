@@ -1,7 +1,7 @@
 import sys
-
 from util.PrettyPrint import PrettyPrint
 from util.Colors import Colors
+from dtos import dto_participants as dtp
 
 __all__ = ['JoinRoom']
 
@@ -16,7 +16,8 @@ class JoinRoom:
                 if room.name == room_name:
                     if room.add(user):
                         user.status_room = room_name
-                        return user
+                        server.participants_repository.put(dtp.Participants(user.nickname, room_name))
+
             user.connection_socket.send(
                 (PrettyPrint.pretty_print("Error in join to room '" + str(room_name) + "' \n\n", Colors.FAIL)).encode())
 

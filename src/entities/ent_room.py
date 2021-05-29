@@ -36,10 +36,10 @@ class Room:
         for client in self.list_of_clients: 
             if client.connection_socket != user.connection_socket:
                 try:
-                    name_color = PrettyPrint.pretty_print(user.nick, user.color)
+                    name_color = PrettyPrint.pretty_print(user.nickname, user.color)
                     message_body = (name_color + ": " + message + "\n").rjust(self.width)
                     client.connection_socket.send(message_body.encode())
-                    self.messages['user'].append(user.nick)
+                    self.messages['user'].append(user.nickname)
                     self.messages['txt'].append(message)
 
                 except Exception as exp:

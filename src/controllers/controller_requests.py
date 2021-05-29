@@ -15,7 +15,16 @@ class ControllerRequests(Thread):
         self.connection_socket: socket = connection_socket
         self.server = server
         self.user: User = user
-        self.commands = ["/create", "/join", "/message", "/help", "/login", "/register"]
+        self.commands = [
+            "/create",
+            "/join",
+            "/message",
+            "/help",
+            "/login",
+            "/register",
+            "/help",
+
+        ]
 
     def parse_request(self, request):
         try:
@@ -89,6 +98,7 @@ class ControllerRequests(Thread):
                     if request.find("/exit") != -1:
                         print("connection closed")
                         self.connection_socket.close()
+
                         break
                     else:
                         self.parse_request(request)

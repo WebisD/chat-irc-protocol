@@ -8,7 +8,7 @@ __all__ = ['User']
 class User:
     def __init__(self, name: str, nick: str, password: str, connection_socket: socket = None):
         self.name: str = name
-        self.nick: str = nick
+        self.nickname: str = nick
         self.password: str = password
         self.connection_socket: socket = connection_socket
         self.status_room: str = 'lobby'
@@ -25,7 +25,7 @@ class User:
         return (
                 "{" +
                 "\n name: " + str(self.name) +
-                "\n nick: " + str(self.nick) +
+                "\n nick: " + str(self.nickname) +
                 "\n password: " + str(self.password) +
                 "\n connectionSkt: " + str(self.connection_socket) +
                 "\n statusRoom: " + str(self.status_room) +

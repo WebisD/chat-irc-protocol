@@ -17,7 +17,7 @@ class Register:
             user = ent.User(name, nick, password, user.connection_socket)
 
             for userRegistered in server.registered_users:
-                if userRegistered.nick == nick:
+                if userRegistered.nickname == nick:
                     user.connection_socket.send(
                         (PrettyPrint.pretty_print(
                             "Client '" + str(name) + "' already registered \n\n",
@@ -28,7 +28,7 @@ class Register:
                     return None
 
             server.registered_users.append(user)
-            server.user_repository.put(dto.User(user.nick, user.name, user.password))
+            server.user_repository.put(dto.User(user.nickname, user.name, user.password))
 
             user.connection_socket.send(
                 (PrettyPrint.pretty_print("Client " + str(name) + " successfully registered \n\n",

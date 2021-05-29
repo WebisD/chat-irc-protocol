@@ -18,18 +18,19 @@ class Login:
             user_found = None
 
             for user_registered in server.registered_users:
-                if user_registered.nick == nick\
+                if user_registered.nickname == nick\
                         and user_registered.password == password\
                         and not user_registered.is_logged:
                     user_found = user_registered
                     nick_ok = True
                     pass_ok = True
-                    user.nick = user_registered.nick
+                    user.nickname = user_registered.nickname
                     user.name = user_registered.name
                     user.password = user_registered.password
                     user.toggle_log()
                     break
-                if user_registered.nick == nick:
+
+                if user_registered.nickname == nick:
                     nick_ok = True
                     if user_registered.is_logged:
                         logged_ok = True

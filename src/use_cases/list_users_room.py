@@ -11,7 +11,7 @@ class ListUsersRoom:
             if room.name == user.status_room:
                 user.connection_socket.send(("Os usuários na sala " + PrettyPrint.pretty_print(str(room.name), Colors.UNDERLINE) + "são: \n\n").encode())
                 for users in room.list_of_clients:
-                    user.connection_socket.send((" • " + PrettyPrint.pretty_print(str(users.nick), Colors.WARNING) + "\n").encode())
+                    user.connection_socket.send((" • " + PrettyPrint.pretty_print(str(users.nickname), Colors.WARNING) + "\n").encode())
                 user.connection_socket.send("\n".encode())
                 return
         user.connection_socket.send(
