@@ -1,7 +1,7 @@
 ControllerConnections module
 ====================
 
-.. automodule:: controllers.ControllerConnections
+.. automodule:: controllers.controller_connections
    :members:
    :undoc-members:
    :show-inheritance:

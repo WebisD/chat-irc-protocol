@@ -1,7 +1,7 @@
 ControllerRequests module
 ====================
 
-.. automodule:: controllers.ControllerRequests
+.. automodule:: controllers.controller_requests
    :members:
    :undoc-members:
    :show-inheritance:

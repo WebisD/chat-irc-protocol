@@ -1,7 +1,7 @@
 Help module
 ====================
 
-.. automodule:: useCases.user.Help
+.. automodule:: use_cases.user.help
    :members:
    :undoc-members:
    :show-inheritance:

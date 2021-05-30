@@ -1,7 +1,7 @@
 User module
 ====================
 
-.. automodule:: entities.User
+.. automodule:: entities.ent_user
    :members:
    :undoc-members:
    :show-inheritance:

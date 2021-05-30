@@ -8,9 +8,11 @@ Concord
    ControllerConnections
    ControllerRequests
    ControllerThread
+   ControllerDatabase
    Server
    Room
    User
+   UserFactory
    PrettyPrint
    Colors
    Create
@@ -23,6 +25,22 @@ Concord
    Login
    Message
    Register
-   PrivateMessage   
+   PrivateMessage
+   FileRepository
+   MessageRepository
+   ParticipantsRepository
+   RepositoryInterface
+   RoomRepository
+   RoomMessagesRepository
+   UserRepository
+   WordsRepository
+   DtoFile
+   DtoMessage
+   DtoParticipants
+   DtoRoom
+   DtoRoomMessages
+   DtoUser
+   DtoWords
+
 
    

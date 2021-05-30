@@ -11,8 +11,8 @@
   
 
   
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="static/pygments.css" type="text/css" />
 
   
   
@@ -24,16 +24,16 @@
 
   
   <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
+    <script src="static/js/html5shiv.min.js"></script>
   <![endif]-->
   
     
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="static/documentation_options.js"></script>
+        <script src="static/jquery.js"></script>
+        <script src="static/underscore.js"></script>
+        <script src="static/doctools.js"></script>
     
-    <script type="text/javascript" src="_static/js/theme.js"></script>
+    <script type="text/javascript" src="static/js/theme.js"></script>
 
     
     <link rel="index" title="Index" href="genindex.html" />
@@ -91,9 +91,11 @@
 <li class="toctree-l2"><a class="reference internal" href="ControllerConnections.html">ControllerConnections module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ControllerRequests.html">ControllerRequests module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ControllerThread.html">ControllerThread module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ControllerDatabase.html">ControllerDatabase module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Server.html">Server module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Room module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="User.html">User module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UserFactory.html">UserFactory module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PrettyPrint.html">PrettyPrint module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Colors.html">Colors module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Create.html">Create module</a></li>
@@ -107,6 +109,21 @@
 <li class="toctree-l2"><a class="reference internal" href="Message.html">Message module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Register.html">Register module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="PrivateMessage.html">PrivateMessage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="FileRepository.html">FileRepository module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageRepository.html">MessageRepository module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ParticipantsRepository.html">ParticipantsRepository module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RepositoryInterface.html">RepositoryInterface module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RoomRepository.html">RoomRepository module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RoomMessagesRepository.html">RoomMessagesRepository module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UserRepository.html">UserRepository module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WordsRepository.html">WordsRepository module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DtoFile.html">DtoFile module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DtoMessage.html">DtoMessage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DtoParticipants.html">DtoParticipants module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DtoRoom.html">DtoRoom module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DtoRoomMessages.html">DtoRoomMessages module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DtoUser.html">DtoUser module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DtoWords.html">DtoWords module</a></li>
 </ul>
 </li>
 </ul>
@@ -178,36 +195,63 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-entities.Room">
-<span id="room-module"></span><h1>Room module<a class="headerlink" href="#module-entities.Room" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-entities.ent_room">
+<span id="room-module"></span><h1>Room module<a class="headerlink" href="#module-entities.ent_room" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="entities.Room.Room">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">entities.Room.</span></code><code class="sig-name descname"><span class="pre">Room</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">maxUser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#entities.Room.Room" title="Permalink to this definition">¶</a></dt>
+<dt id="entities.ent_room.Room">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">entities.ent_room.</span></code><code class="sig-name descname"><span class="pre">Room</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">room_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#entities.ent_room.Room" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Class of Room in server</p>
 <dl class="py method">
-<dt id="entities.Room.Room.add">
-<code class="sig-name descname"><span class="pre">add</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="User.html#entities.User.User" title="entities.User.User"><span class="pre">entities.User.User</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#entities.Room.Room.add" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add a new user in room
-:param user: user who wants to join
-:returns: result of insertion</p>
+<dt id="entities.ent_room.Room.add">
+<code class="sig-name descname"><span class="pre">add</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="User.html#entities.ent_user.User" title="entities.ent_user.User"><span class="pre">entities.ent_user.User</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#entities.ent_room.Room.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new user in room</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>user</strong> – user who wants to join</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result of insertion</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="entities.Room.Room.broadcast">
-<code class="sig-name descname"><span class="pre">broadcast</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#entities.Room.Room.broadcast" title="Permalink to this definition">¶</a></dt>
-<dd><p>Send the message to all users in this room (broadcast)
-:param message:message to be send
-:param user: user who sent this message
-:returns: None</p>
+<dt id="entities.ent_room.Room.broadcast">
+<code class="sig-name descname"><span class="pre">broadcast</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#entities.ent_room.Room.broadcast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send the message to all users in this room (broadcast)</p>
+<p>:param message:message to be send
+:param user: user who sent this message</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="entities.Room.Room.remove">
-<code class="sig-name descname"><span class="pre">remove</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#entities.Room.Room.remove" title="Permalink to this definition">¶</a></dt>
-<dd><p>Remove an user of room
-:param user: user who wants to leave room
-:returns: result of insertion</p>
+<dt id="entities.ent_room.Room.remove">
+<code class="sig-name descname"><span class="pre">remove</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="User.html#entities.ent_user.User" title="entities.ent_user.User"><span class="pre">entities.ent_user.User</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#entities.ent_room.Room.remove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove an user of room</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>user</strong> – user who wants to leave room</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>result of insertion</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="entities.ent_room.Room.to_dto">
+<code class="sig-name descname"><span class="pre">to_dto</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="DtoRoom.html#dtos.dto_room.Room" title="dtos.dto_room.Room"><span class="pre">dtos.dto_room.Room</span></a><a class="headerlink" href="#entities.ent_room.Room.to_dto" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert room to dto</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dto obj</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

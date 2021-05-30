@@ -1,7 +1,7 @@
 ListRoom module
 ====================
 
-.. automodule:: useCases.user.Listroom
+.. automodule:: use_cases.user.listroom
    :members:
    :undoc-members:
    :show-inheritance:

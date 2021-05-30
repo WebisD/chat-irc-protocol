@@ -1,7 +1,7 @@
 Join module
 ====================
 
-.. automodule:: useCases.room.Join
+.. automodule:: use_cases.room.join
    :members:
    :undoc-members:
    :show-inheritance:

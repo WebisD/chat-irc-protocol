@@ -1,7 +1,7 @@
 Room module
 ====================
 
-.. automodule:: entities.Room
+.. automodule:: entities.ent_room
    :members:
    :undoc-members:
    :show-inheritance:
