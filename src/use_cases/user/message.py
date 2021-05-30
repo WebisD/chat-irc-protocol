@@ -47,7 +47,7 @@ class Message:
             message = " ".join(args)
 
             user.connection_socket.send(
-                (PrettyPrint.pretty_print("Error in send message '" + message + "'. Are you logged?' \n\n",
+                (PrettyPrint.pretty_print("Error in sending message '" + message + "'. Are you logged?' \n\n",
                                           Colors.FAIL)).encode())
 
         return user

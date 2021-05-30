@@ -13,11 +13,11 @@ class Create:
         try:
             if user.status_room != 'lobby':
                 user.connection_socket.send(
-                 (PrettyPrint.pretty_print("Você já está em uma sala \n\n", Colors.FAIL)).encode())
+                 (PrettyPrint.pretty_print("You are already in a room, chief \n\n", Colors.FAIL)).encode())
                 return user
             if not user.is_logged:
                 user.connection_socket.send(
-                 (PrettyPrint.pretty_print("Você deve estar logado \n\n", Colors.FAIL)).encode())
+                 (PrettyPrint.pretty_print("You must login first, buddy \n\n", Colors.FAIL)).encode())
                 return user
 
             name = args[0]
@@ -44,6 +44,6 @@ class Create:
         except Exception as exp:
             print(exp.with_traceback(sys.exc_info()[2]))
             user.connection_socket.send(
-                (PrettyPrint.pretty_print("Error in create room '" + str(args[0]) + "' \n\n", Colors.FAIL)).encode())
+                (PrettyPrint.pretty_print("Error in creating room '" + str(args[0]) + "' \n\n", Colors.FAIL)).encode())
 
             return user

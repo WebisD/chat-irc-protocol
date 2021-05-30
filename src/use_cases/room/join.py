@@ -10,12 +10,12 @@ class Join:
     def response(user: User, server, args: list) -> User:
         if user.status_room != 'lobby':
             user.connection_socket.send(
-                (PrettyPrint.pretty_print("Você já está em uma sala \n\n", Colors.FAIL)).encode())
+                (PrettyPrint.pretty_print("You are already in a room, master \n\n", Colors.FAIL)).encode())
             return user
 
         if not user.is_logged:
             user.connection_socket.send(
-                (PrettyPrint.pretty_print("Você não está logado amigo \n\n", Colors.FAIL)).encode())
+                (PrettyPrint.pretty_print("You must login first, dawg \n\n", Colors.FAIL)).encode())
             return user
 
         room_name = args[0]
@@ -32,6 +32,6 @@ class Join:
                     return user
 
         user.connection_socket.send(
-            (PrettyPrint.pretty_print("Error in join to room '" + str(room_name) + "' \n\n", Colors.FAIL)).encode())
+            (PrettyPrint.pretty_print("Error in joining to room '" + str(room_name) + "' \n\n", Colors.FAIL)).encode())
 
         return user

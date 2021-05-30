@@ -25,7 +25,7 @@ class Register:
                 if registered_user.nickname == nickname:
                     user.connection_socket.send(
                         (PrettyPrint.pretty_print(
-                            "Client '" + str(name) + "' already registered \n\n", Colors.FAIL
+                            "Client '" + str(name) + "' is already registered \n\n", Colors.FAIL
                         )).encode()
                     )
 
