@@ -10,8 +10,17 @@ __all__ = ['Logout']
 
 
 class Logout:
+    """Class to log out the user in the server"""
+
     @staticmethod
     def response(user: User, server, args) -> User:
+        """Performs the logout of user in the server 
+        
+        :param server: IP where the server will be allocated 
+        :param args: args to logout the user 
+        
+        :returns: user obj with the changes
+        """
         try:
             if not user.is_logged:
                 raise Exception("Not logged")

@@ -4,10 +4,15 @@ __all__ = ['ControllerThread']
 
 
 class ControllerThread:
+    """Class of thread responsible for handling threads"""
+
     @staticmethod
-    def terminate_thread(thread):
-        """Terminates a python thread from another thread.
-        :param thread: a threading.Thread instance
+    def terminate_thread(thread) -> None:
+        """Terminates thread from another thread. 
+
+        :param thread: the thread instance to stop 
+        
+        :returns: None
         """
         if not thread.isAlive():
             return

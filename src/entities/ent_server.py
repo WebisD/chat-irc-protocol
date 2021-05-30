@@ -8,12 +8,16 @@ __all__ = ['Server', 'start_server']
 
 
 class Server:
-    def __init__(self, ip, port):
+    """Class of Server"""
+
+    def __init__(self, ip, port) -> None:
         """ Performs the creation of an object of type Server, in addition
         will create a handler that will execute on a thread waiting for requests
 
         :param ip: IP where the server will be allocated
         :param port: Port where the server will be allocated
+
+        :returns: None
         """
         self.ip = ip
         self.port = port
@@ -40,6 +44,10 @@ class Server:
         self.registered_users: List[ent_user.User] = self.__get_registered_users()
 
     def __get_registered_rooms(self) -> List[ent_room.Room]:
+        """ Return the list of registered rooms in the server
+
+        :returns: list of rooms
+        """
         registered_rooms: List[ent_room.Room] = []
         rooms, _ = self.room_repository.get_all_rooms()
 
@@ -52,6 +60,10 @@ class Server:
         return registered_rooms
 
     def __get_registered_users(self) -> List[ent_user.User]:
+        """ Return the list of registered users in the server
+
+        :returns: list of users
+        """
         registered_users: List[ent_user.User] = []
         users, _ = self.user_repository.get_all_users()
 
@@ -67,6 +79,8 @@ class Server:
 def start_server() -> None:
     """ It performs the instantiation of an object of type Server, allocating it in the
     local ip and port 8083
+    
+    :returns: None
     """
     server_http = Server('localhost', 8083)
     print("Server started on " + server_http.ip + ":" + str(server_http.port))

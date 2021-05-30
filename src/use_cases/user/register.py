@@ -6,8 +6,18 @@ __all__ = ['Register']
 
 
 class Register:
+    """Class to register the user in the server"""
+
     @staticmethod
     def response(user, server, args) -> User:
+        """Performs the register of user in the server 
+        
+        :param server: IP where the server will be allocated 
+        :param args: args to register the user 
+        
+        :returns: user obj with the changes
+
+        """
         try:
             name = args[0]
             nickname = args[1]

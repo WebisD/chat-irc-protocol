@@ -9,7 +9,17 @@ __all__ = ['Room']
 
 
 class Room:
-    def __init__(self, name, max_user, room_id: str = None):
+    """Class of Room in server"""
+
+    def __init__(self, name, max_user, room_id: str = None) -> None:
+        """Initializes the Room class instance's attributes
+
+        :param name: Room's name
+        :param max_user: Room's number of maximum users
+        :param room_id: Room's id
+
+        :returns: None
+        """
         self.id = uuid4().__str__() if room_id is None else room_id
         self.width = os.get_terminal_size().columns
         self.name = name
@@ -20,7 +30,14 @@ class Room:
             "txt": []
         }
 
-    def broadcast(self, message, user):
+    def broadcast(self, message, user) -> None:
+        """ Send the message to all users in this room (broadcast) 
+
+        :param message:message to be send 
+        :param user: user who sent this message 
+
+        :returns: None
+        """
         for client in self.list_of_clients:
             if client.connection_socket != user.connection_socket:
                 try:
@@ -39,6 +56,12 @@ class Room:
                 user.connection_socket.send(('\r\t\t\t\t\t' + name_color + ": " + message + "\n").encode())
 
     def remove(self, user: User) -> bool:
+        """ Remove an user of room 
+
+        :param user: user who wants to leave room 
+        :returns: result of insertion
+
+        """
         if user in self.list_of_clients:
             self.list_of_clients.remove(user)
             self.broadcast("Sai da sala " + str(user.name), user)
@@ -47,6 +70,12 @@ class Room:
         return False
 
     def add(self, user: User) -> bool:
+        """ Add a new user in room 
+
+        :param user: user who wants to join 
+        :returns: result of insertion
+
+        """
         if (len(self.list_of_clients) + 1) <= self.max_user:
             if user not in self.list_of_clients:
                 self.list_of_clients.append(user)
@@ -59,4 +88,8 @@ class Room:
         return False
 
     def to_dto(self) -> dtoRoom:
+        """ Convert room to dto
+        
+        :returns: dto obj
+        """
         return dtoRoom(name=self.name, max_participants=self.max_user, room_id=self.id)

@@ -10,12 +10,27 @@ __all__ = ['ControllerRequests']
 
 
 class ControllerRequests(Thread):
-    def __init__(self, server, incoming_user):
+    """Class of thread responsible for handling incoming requests of the user"""
+
+    def __init__(self, server, incoming_user)  -> None:
+        """Initializes the ControllerRequests class instance's attributes
+
+        :param server: Server obj
+        :param incoming_user: user obj
+
+        :returns: None
+        """
         Thread.__init__(self)
         self.server = server
         self.user = incoming_user
 
-    def parse_request(self, request):
+    def parse_request(self, request) -> None:
+        """ Responsible for checking the request type and calling the appropriate method
+
+        :param request: A Request object 
+
+        :returns: None
+        """
         try:
             print(self.user.to_string())
             request = request.replace('\n', '').replace('\r', '').split(' ')
@@ -53,7 +68,11 @@ class ControllerRequests(Thread):
             self.user.connection_socket.send(
                 (PrettyPrint.pretty_print(error_message, Colors.FAIL)).encode())
 
-    def run(self):
+    def run(self)  -> None:
+        """ Responsible for running the thread
+
+        :returns: None
+        """
         while True:
             try:
                 request = self.user.connection_socket.recv(1024).decode()
@@ -70,7 +89,11 @@ class ControllerRequests(Thread):
                 print(exp.with_traceback(sys.exc_info()[2]))
                 self.close_connection()
 
-    def close_connection(self):
+    def close_connection(self) -> None:
+        """ Responsible for stop the thread and logout user
+
+        :returns: None
+        """
         if self.user.status_room != 'lobby':
             self.user = Leave.response(self.user, self.server, [])
         if self.user.is_logged:
