@@ -1,10 +1,13 @@
-from entities.Server import startServer
+from entities import *
 
-""" Calls the function that instantiates a server
-        
-"""
+
 def main() -> None:
-    startServer()
+    """ Calls the function that instantiates a server
+
+    :returns: None
+    """
+    start_server()
+
 
 if __name__ == "__main__":
     main()
