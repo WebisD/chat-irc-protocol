@@ -56,6 +56,29 @@ class MessageRepository(RepositoryInterface):
 
         return [], False
 
+    def find_all_by_sender_id_and_receiver_id(self, sender_id: str, receiver_id: str) -> Tuple[List[Message], bool]:
+        try:
+            self.controller_database.run_query_with_args(
+                f'''
+                    SELECT * from {self.table_name} where sender_id = :sender_id AND receiver_id = :receiver_id
+                ''',
+                {"sender_id": sender_id, "receiver_id": receiver_id}
+            )
+
+            result = self.controller_database.fetch_all_results_from_last_query()
+            message_list: List[Message] = []
+
+            for rows in result:
+                message_list.append(Message(*rows))
+
+            return message_list, True
+
+        except Exception as exp:
+            print(f"Could not find messages with sender_id {sender_id}")
+            print(repr(exp))
+
+        return [], False
+
     def find_all_by_receiver_id(self, receiver_id: str) -> Tuple[List[Message], bool]:
         try:
             self.controller_database.run_query_with_args(
