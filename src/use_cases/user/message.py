@@ -10,8 +10,17 @@ __all__ = ['Message']
 
 
 class Message:
+    """Class to send a message of the user in the room"""
+
     @staticmethod
     def response(user, server, args) -> User:
+        """Performs the broadcast in the rooms, basically send the message of the user to anothers in the room 
+        
+        :param server: IP where the server will be allocated 
+        :param args: args to send the message 
+        
+        :returns: user obj with the changes
+        """
         try:
             if not user.is_logged or user.status_room == 'lobby':
                 raise Exception("Invalid command")

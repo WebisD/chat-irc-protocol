@@ -6,9 +6,17 @@ __all__ = ['Privatemessage']
 
 
 class Privatemessage:
+    """Class to send private a message of the user in the server"""
 
     @staticmethod
     def response(user, server, args) -> User:
+        """Sending the message of user only to other user 
+        
+        :param server: IP where the server will be allocated 
+        :param args: args to send the private message 
+        
+        :returns: user obj with the changes
+        """
         try:
             if not user.is_logged:
                 raise Exception("You have to be logged in to send private messages.\n\n")

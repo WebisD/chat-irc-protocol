@@ -6,8 +6,17 @@ __all__ = ['Login']
 
 
 class Login:
+    """Class to log in the user in the server"""
+
     @staticmethod
     def response(user, server, args) -> User:
+        """Performs the login of user in the server 
+        
+        :param server: IP where the server will be allocated 
+        :param args: args to login the user 
+        
+        :returns: user obj with the changes
+        """
         try:
             if user.is_logged:
                 user.connection_socket.send(

@@ -25,6 +25,21 @@ Concord
    Login
    Message
    Register
-   PrivateMessage   
+   PrivateMessage
+   FileRepository
+   MessageRepository
+   ParticipantsRepository
+   RepositoryInterface
+   RoomRepository
+   UserRepository
+   WordsRepository
+   DtoFile
+   DtoMessage
+   DtoParticipants
+   DtoRoom
+   DtoRoomMessages
+   DtoUser
+   DtoWords
+
 
    

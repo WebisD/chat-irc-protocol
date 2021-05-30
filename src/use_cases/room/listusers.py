@@ -5,8 +5,17 @@ __all__ = ['Listusers']
 
 
 class Listusers:
+    """Class to listusers in the room or the lobby"""
+
     @staticmethod
     def response(user, server, args) -> None:
+        """Performs the listing of users in room or the lobby 
+        
+        :param server: IP where the server will be allocated 
+        :param args: args to list the users 
+        
+        :returns: user obj with the changes
+        """
         try:
             if user.status_room == 'lobby':
                 user.connection_socket.send(

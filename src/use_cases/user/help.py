@@ -5,6 +5,8 @@ __all__ = ['Help']
 
 
 class Help:
+    """Class to show to user all commands"""
+
     logged_commands = {
         '/help': None,
         '/create': '<room_name> <size>',
@@ -32,6 +34,13 @@ class Help:
 
     @staticmethod
     def response(active_user, server, args) -> User:
+        """Performs the listing of commands
+        
+        :param server: IP where the server will be allocated 
+        :param args: args to show help commands 
+        
+        :returns: user obj with the changes
+        """
         try:
             message = "\n Available commands"
             list_commands = Help.logged_commands if active_user.is_logged else Help.not_logged_commands
@@ -55,7 +64,13 @@ class Help:
             return active_user
 
     @staticmethod
-    def get_full_command(value):
+    def get_full_command(value) -> str:
+        """Performs the comparision of command
+        
+        :param value: commands
+        
+        :returns: command
+        """
         for command, abv in Help.acronyms.items():
             if abv == value:
                 return command

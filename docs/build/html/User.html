@@ -186,25 +186,55 @@
 <dt id="entities.ent_user.User">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">entities.ent_user.</span></code><code class="sig-name descname"><span class="pre">User</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nickname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">connection_socket</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#entities.ent_user.User" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class of User in server</p>
 <dl class="py method">
 <dt id="entities.ent_user.User.set_socket">
 <code class="sig-name descname"><span class="pre">set_socket</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection_socket</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#entities.ent_user.User.set_socket" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Set the user socket</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>connectionSkt</strong> – socket of user connection</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="entities.ent_user.User.to_dto">
 <code class="sig-name descname"><span class="pre">to_dto</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">dtos.dto_user.User</span><a class="headerlink" href="#entities.ent_user.User.to_dto" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Convert user to dto</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>dto obj</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="entities.ent_user.User.to_string">
 <code class="sig-name descname"><span class="pre">to_string</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#entities.ent_user.User.to_string" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Send the message to all users in this room (broadcast)</p>
+<p>:param message:message to be send
+:param user: user who sent this message</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="entities.ent_user.User.toggle_log">
 <code class="sig-name descname"><span class="pre">toggle_log</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <span class="pre">None</span><a class="headerlink" href="#entities.ent_user.User.toggle_log" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Invert the status of login</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

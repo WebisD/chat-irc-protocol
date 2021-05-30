@@ -6,8 +6,17 @@ __all__ = ['Join']
 
 
 class Join:
+    """Class to join user in the room"""
+
     @staticmethod
     def response(user: User, server, args: list) -> User:
+        """Performs the insertion of an user in the room 
+        
+        :param server: IP where the server will be allocated 
+        :param args: args to join in the room 
+        
+        :returns: user obj with the changes
+        """
         if user.status_room != 'lobby':
             user.connection_socket.send(
                 (PrettyPrint.pretty_print("Você já está em uma sala \n\n", Colors.FAIL)).encode())

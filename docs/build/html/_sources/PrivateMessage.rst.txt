@@ -1,7 +1,7 @@
 PrivateMessage module
 ====================
 
-.. automodule:: useCases.user.privatemessage
+.. automodule:: use_cases.user.privatemessage
    :members:
    :undoc-members:
    :show-inheritance:

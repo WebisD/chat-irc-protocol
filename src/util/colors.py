@@ -2,6 +2,8 @@ __all__ = ['Colors']
 
 
 class Colors:
+    """Enum class of colors"""
+
     # Server
     OKCYAN = '\033[96m'
     OKGREEN = '\033[92m'

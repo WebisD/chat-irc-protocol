@@ -8,8 +8,17 @@ __all__ = ['Create']
 
 
 class Create:
+    """Class to create room in server"""
+
     @staticmethod
     def response(user: User, server, args: list) -> User:
+        """Performs the creation of a room in the Server 
+        
+        :param server: IP where the server will be allocated 
+        :param args: args to create the room 
+        
+        :returns: user obj with the changes
+        """
         try:
             if user.status_room != 'lobby':
                 user.connection_socket.send(

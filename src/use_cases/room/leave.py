@@ -6,8 +6,17 @@ __all__ = ['Leave']
 
 
 class Leave:
+    """Class to remove user of the room"""
+
     @staticmethod
     def response(user, server, args=None) -> User:
+        """Performs the insertion of an user in the room 
+        
+        :param server: IP where the server will be allocated 
+        :param args: args to leave the room 
+        
+        :returns: user obj with the changes      
+        """
         try:
             if not user.is_logged or user.status_room == 'lobby':
                 user.connection_socket.send(

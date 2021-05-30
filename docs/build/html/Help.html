@@ -186,6 +186,7 @@
 <dt id="use_cases.user.help.Help">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">use_cases.user.help.</span></code><code class="sig-name descname"><span class="pre">Help</span></code><a class="headerlink" href="#use_cases.user.help.Help" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Class to show to user all commands</p>
 <dl class="py attribute">
 <dt id="use_cases.user.help.Help.acronyms">
 <code class="sig-name descname"><span class="pre">acronyms</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'/listroom':</span> <span class="pre">'/lr',</span> <span class="pre">'/listusers':</span> <span class="pre">'/lu',</span> <span class="pre">'/message':</span> <span class="pre">'/m',</span> <span class="pre">'/privatemessage':</span> <span class="pre">'/pm'}</span></em><a class="headerlink" href="#use_cases.user.help.Help.acronyms" title="Permalink to this definition">¶</a></dt>
@@ -193,8 +194,17 @@
 
 <dl class="py method">
 <dt id="use_cases.user.help.Help.get_full_command">
-<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">get_full_command</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#use_cases.user.help.Help.get_full_command" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">get_full_command</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">str</span><a class="headerlink" href="#use_cases.user.help.Help.get_full_command" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs the comparision of command</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>value</strong> – commands</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>command</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py attribute">
 <dt id="use_cases.user.help.Help.logged_commands">
@@ -209,7 +219,19 @@
 <dl class="py method">
 <dt id="use_cases.user.help.Help.response">
 <em class="property"><span class="pre">static</span> </em><code class="sig-name descname"><span class="pre">response</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">active_user</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="User.html#entities.ent_user.User" title="entities.ent_user.User"><span class="pre">entities.ent_user.User</span></a><a class="headerlink" href="#use_cases.user.help.Help.response" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Performs the listing of commands</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>server</strong> – IP where the server will be allocated</p></li>
+<li><p><strong>args</strong> – args to show help commands</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>user obj with the changes</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
