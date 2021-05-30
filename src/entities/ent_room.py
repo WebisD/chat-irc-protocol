@@ -2,12 +2,14 @@ import sys
 import os
 from entities.ent_user import *
 from util import *
+from uuid import uuid4
 
 __all__ = ['Room']
 
 
 class Room:
-    def __init__(self, name, max_user):
+    def __init__(self, name, max_user, room_id: str = None):
+        self.id = uuid4().__str__() if room_id is None else room_id
         self.width = os.get_terminal_size().columns
         self.name = name
         self.list_of_clients = []

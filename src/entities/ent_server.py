@@ -1,5 +1,8 @@
 from socket import *
+from typing import List
 from controllers import *
+from repositories import *
+from entities import *
 
 __all__ = ['Server', 'start_server']
 
@@ -20,12 +23,44 @@ class Server:
         server_socket.listen(1)
         self.server_socket = server_socket
 
+        self.user_repository: UserRepository = UserRepository()
+        self.room_repository: RoomRepository = RoomRepository()
+        self.message_repository: MessageRepository = MessageRepository()
+        self.participants_repository: ParticipantsRepository = ParticipantsRepository()
+        self.room_messages_repository: RoomMessagesRepository = RoomMessagesRepository()
+        self.file_repository: FileRepository = FileRepository()
+        self.words_repository: WordsRepository = WordsRepository()
+
         self.controller_connections = ControllerConnections(self)
         self.controller_connections.start()
 
         self.active_users = []
-        self.registered_rooms = []
-        self.registered_users = []
+        self.registered_rooms: List[ent_room.Room] = self.__get_registered_rooms()
+        self.registered_users: List[ent_user.User] = self.__get_registered_users()
+
+    def __get_registered_rooms(self) -> List[ent_room.Room]:
+        registered_rooms: List[ent_room.Room] = []
+        rooms, _ = self.room_repository.get_all_rooms()
+
+        if rooms is None:
+            return []
+
+        for room in rooms:
+            registered_rooms.append(ent_room.Room(room.name, room.max_participants, room.id))
+
+        return registered_rooms
+
+    def __get_registered_users(self) -> List[ent_user.User]:
+        registered_users: List[ent_user.User] = []
+        users, _ = self.user_repository.get_all_users()
+
+        if users is None:
+            return []
+
+        for user in users:
+            registered_users.append(ent_user.User(user.name, user.nickname, user.password))
+
+        return registered_users
 
 
 def start_server() -> None:

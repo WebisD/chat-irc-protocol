@@ -3,8 +3,8 @@ import shutil
 from threading import Thread
 from controllers.controller_requests import *
 from entities.ent_user import *
+from entities.resources import *
 from util import *
-from random import randint
 
 __all__ = ['ControllerConnections']
 
@@ -29,7 +29,7 @@ class ControllerConnections(Thread):
                                      f"{PrettyPrint.pretty_print('/register <name> <user> <passw>', Colors.WARNING)}"
                                      f"\n\n").encode())
 
-            user = User("UserRandom", "random" + str(randint(0, 10000)), "", connection_socket)
+            user = UserFactory.create(connection_socket=connection_socket)
 
             self.server.active_users.append(user)
             handler_requests = ControllerRequests(self.server, user)

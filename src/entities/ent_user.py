@@ -5,7 +5,7 @@ __all__ = ['User']
 
 
 class User:
-    def __init__(self, name, nickname, password, connection_socket):
+    def __init__(self, name, nickname, password, connection_socket=None):
         self.name = name
         self.nickname = nickname
         self.password = password
