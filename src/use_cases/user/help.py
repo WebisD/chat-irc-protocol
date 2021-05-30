@@ -10,17 +10,17 @@ class Help:
         '/create': '<room_name> <size>',
         '/listroom': None,
         '/join': '<room_name>',
-        '/message': '-your_message',
+        '/message': '<your_message>',
         '/listusers': None,
         '/leave': None,
         '/logout': None,
         '/quit': None,
-        '/privatemessage': '-receiver_user -your_message'
+        '/privatemessage': '<receiver_user> <your_message>'
     }
     not_logged_commands = {
         '/help': None,
-        '/register': '-name -pass -nick',
-        '/login':  '-nick -pass',
+        '/register': '<name> <pass> <nick>',
+        '/login':  '<nick> <pass>',
         '/quit': None,
     }
     acronyms = {
