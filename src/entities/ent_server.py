@@ -11,6 +11,7 @@ class Server:
     def __init__(self, ip, port):
         """ Performs the creation of an object of type Server, in addition
         will create a handler that will execute on a thread waiting for requests
+
         :param ip: IP where the server will be allocated
         :param port: Port where the server will be allocated
         """

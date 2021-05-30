@@ -7,9 +7,9 @@ __all__ = ['Help']
 class Help:
     logged_commands = {
         '/help': None,
-        '/create': '-room_name -size',
+        '/create': '<room_name> <size>',
         '/listroom': None,
-        '/join': '-room_name',
+        '/join': '<room_name>',
         '/message': '-your_message',
         '/listusers': None,
         '/leave': None,

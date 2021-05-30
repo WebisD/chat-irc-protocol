@@ -21,8 +21,8 @@ class Register:
 
             user_to_register = User(name, nickname, password, user.connection_socket)
 
-            for userRegistered in server.registered_users:
-                if userRegistered.nickname == nickname:
+            for registered_user in server.registered_users:
+                if registered_user.nickname == nickname:
                     user.connection_socket.send(
                         (PrettyPrint.pretty_print(
                             "Client '" + str(name) + "' already registered \n\n", Colors.FAIL
@@ -32,6 +32,8 @@ class Register:
                     return user
 
             server.registered_users.append(user_to_register)
+            server.user_repository.put(user_to_register.to_dto())
+
             user.connection_socket.send(
                 (PrettyPrint.pretty_print(
                     "Client " + str(name) + " successfully registered \n\n", Colors.OKGREEN

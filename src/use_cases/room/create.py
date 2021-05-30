@@ -1,6 +1,7 @@
 import sys
 from entities.ent_user import *
 from entities.ent_room import *
+from entities.ent_server import *
 from util import *
 
 __all__ = ['Create']
@@ -8,7 +9,7 @@ __all__ = ['Create']
 
 class Create:
     @staticmethod
-    def response(user, server, args) -> User:
+    def response(user: User, server, args: list) -> User:
         try:
             if user.status_room != 'lobby':
                 user.connection_socket.send(
@@ -23,13 +24,18 @@ class Create:
             max_user = args[1]
             room = Room(name, int(max_user))
 
-            for roomRegistered in server.registered_rooms:
-                if roomRegistered.name == room.name:
+            for registered_room in server.registered_rooms:
+                if registered_room.name == room.name:
                     user.connection_socket.send(
-                        (PrettyPrint.pretty_print("Room '" + str(name) + "' already created!\n\n", Colors.FAIL)).encode())
+                        (PrettyPrint.pretty_print(
+                            "Room '" + str(name) + "' already created!\n\n", Colors.FAIL
+                        )).encode())
+
                     return user
                     
             server.registered_rooms.append(room)
+            server.room_repository.put(room.to_dto())
+
             user.connection_socket.send(
                 (PrettyPrint.pretty_print("Room '" + str(name) + "' created!\n\n", Colors.OKGREEN)).encode())
 

@@ -1,6 +1,7 @@
 import sys
 import os
 from entities.ent_user import *
+from dtos.dto_room import Room as dtoRoom
 from util import *
 from uuid import uuid4
 
@@ -56,3 +57,6 @@ class Room:
             self.broadcast("Entrei na sala " + str(user.name), user)
             return True
         return False
+
+    def to_dto(self) -> dtoRoom:
+        return dtoRoom(name=self.name, max_participants=self.max_user, room_id=self.id)

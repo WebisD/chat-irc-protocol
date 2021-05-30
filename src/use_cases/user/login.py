@@ -22,27 +22,28 @@ class Login:
 
             if nickname == '' or password == '':
                 raise Exception("Invalid command")
+
             nick_ok = False
             pass_ok = False
             logged_ok = False
             user_found: User or None = None
 
-            for userRegistered in server.registered_users:
-                if userRegistered.nickname == nickname \
-                        and userRegistered.password == password \
-                        and not userRegistered.is_logged:
+            for registered_user in server.registered_users:
+                if registered_user.nickname == nickname \
+                        and registered_user.password == password \
+                        and not registered_user.is_logged:
 
-                    user_found = userRegistered
+                    user_found = registered_user
                     nick_ok = True
                     pass_ok = True
                     break
 
-                if userRegistered.nickname == nickname:
+                if registered_user.nickname == nickname:
                     nick_ok = True
-                    if userRegistered.is_logged:
+                    if registered_user.is_logged:
                         logged_ok = True
 
-                if userRegistered.password == password:
+                if registered_user.password == password:
                     pass_ok = True
 
             if nick_ok and pass_ok and not logged_ok:

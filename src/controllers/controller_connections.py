@@ -2,7 +2,6 @@ import os
 import shutil
 from threading import Thread
 from controllers.controller_requests import *
-from entities.ent_user import *
 from entities.resources import *
 from util import *
 
