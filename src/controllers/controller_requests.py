@@ -1,6 +1,7 @@
 import sys
 import difflib
 from threading import Thread
+from controllers.controller_thread import ControllerThread
 from use_cases import *
 from controllers import *
 from util import *
