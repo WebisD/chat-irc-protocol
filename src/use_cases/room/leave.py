@@ -27,6 +27,7 @@ class Leave:
                 if room.name == user.status_room:
                     if room.remove(user):
                         user.status_room = 'lobby'
+                        server.participants_repository.delete_by_user_id(user.nickname)
                         user.connection_socket.send(
                             (PrettyPrint.pretty_print("User left room successfully!\n\n", Colors.OKGREEN)).encode())
                         return user

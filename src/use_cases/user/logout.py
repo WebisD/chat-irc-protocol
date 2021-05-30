@@ -1,8 +1,8 @@
 import sys
 
-from entities import UserFactory
 from util import *
 from entities.ent_user import *
+from entities.resources import *
 from use_cases import *
 from random import randint
 
