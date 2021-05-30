@@ -21,7 +21,7 @@ class Login:
             if user.is_logged:
                 user.connection_socket.send(
                     (PrettyPrint.pretty_print(
-                        "Client '" + str(user.nickname) + "' already logged\n\n", Colors.FAIL
+                        "Client '" + str(user.nickname) + "' already logged in\n\n", Colors.FAIL
                     )).encode()
                 )
                 raise Exception("Already logged")
@@ -65,13 +65,13 @@ class Login:
                         server.active_users.append(user_found)
 
                 user.connection_socket.send(
-                    (PrettyPrint.pretty_print("Client " + str(nickname) + " successfully log\n\n",
+                    (PrettyPrint.pretty_print("Client " + str(nickname) + " successfully logged in\n\n",
                                               Colors.OKGREEN)).encode())
                 return user_found
 
             elif logged_ok:
                 user.connection_socket.send(
-                    (PrettyPrint.pretty_print("Client '" + str(nickname) + "' already logged\n\n", Colors.FAIL)).encode())
+                    (PrettyPrint.pretty_print("Client '" + str(nickname) + "' already logged in\n\n", Colors.FAIL)).encode())
             elif not nick_ok:
                 user.connection_socket.send(
                     (PrettyPrint.pretty_print("Client '" + str(nickname) + "' not found\n\n", Colors.FAIL)).encode())
@@ -84,6 +84,6 @@ class Login:
         except Exception as exp:
             print(exp.with_traceback(sys.exc_info()[2]))
             user.connection_socket.send(
-                (PrettyPrint.pretty_print("Error in login client '" + str(args[0]) + "'\n\n", Colors.FAIL)).encode())
+                (PrettyPrint.pretty_print("Error in logging client '" + str(args[0]) + "'in \n\n", Colors.FAIL)).encode())
 
             return user

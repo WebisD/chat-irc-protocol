@@ -19,11 +19,12 @@ class Listusers:
         try:
             if user.status_room == 'lobby':
                 user.connection_socket.send(
-                    (PrettyPrint.pretty_print("Você não está em nenhuma sala \n\n", Colors.FAIL)).encode()
+                    (PrettyPrint.pretty_print("You are not in a room, my liege \n\n", Colors.FAIL)).encode()
                 )
 
                 user.connection_socket.send((
-                    "Os usuários no " + PrettyPrint.pretty_print(str("lobby"), Colors.UNDERLINE) + " são: \n\n"
+                    "The users in "
+                    + PrettyPrint.pretty_print(str("lobby"), Colors.UNDERLINE) + " are the following: \n\n"
                 ).encode())
 
                 for users in server.active_users:
@@ -36,8 +37,8 @@ class Listusers:
             for room in server.registered_rooms:
                 if room.name == user.status_room:
                     user.connection_socket.send((
-                        "Os usuários na sala " +
-                        PrettyPrint.pretty_print(str(room.name), Colors.UNDERLINE) + " são: \n\n"
+                        "The users in room " +
+                        PrettyPrint.pretty_print(str(room.name), Colors.UNDERLINE) + " are the following: \n\n"
                     ).encode())
 
                     for users in room.list_of_clients:

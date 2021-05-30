@@ -1,3 +1,5 @@
+import fnmatch
+import os
 import sys
 from sqlite3 import *
 from typing import List, Any
@@ -10,13 +12,14 @@ class ControllerDatabase:
 
     def __init__(self,
                  db_name: str,
-                 sql_file_path: str = f"../docs/Relationship Model/DDL Generated/data_model_table_create.sql"
+                 sql_file_name: str = f"data_model_table_create.sql"
                  ):
         self.connection: Connection = connect(db_name, check_same_thread=False, timeout=5)
         self.cursor: Cursor = self.connection.cursor()
 
         try:
-            with open(sql_file_path, 'r', encoding="utf-8") as file:
+            sql_file_path = find(sql_file_name, '../')
+            with open(sql_file_path[0], 'r', encoding="utf-8") as file:
                 if not file:
                     print(f"")
                     raise FileNotFoundError(f"Could not find {sql_file_path}")
@@ -74,3 +77,12 @@ class ControllerDatabase:
 
     def __del__(self):
         self.connection.close()
+
+
+def find(pattern, path):
+    result = []
+    for root, dirs, files in os.walk(path):
+        for name in files:
+            if fnmatch.fnmatch(name, pattern):
+                result.append(os.path.join(root, name))
+    return result
