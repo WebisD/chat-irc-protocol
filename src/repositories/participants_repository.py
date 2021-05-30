@@ -189,7 +189,7 @@ class ParticipantsRepository(RepositoryInterface):
             self.controller_database.save_changes()
 
         except Exception as exp:
-            print(f"Could not delete participant with room_id {user_id}")
+            print(f"Could not delete participant with user_id {user_id}")
             print(repr(exp))
 
             return False
