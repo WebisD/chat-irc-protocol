@@ -1,0 +1,44 @@
+import sys
+from util import *
+
+__all__ = ['Listusers']
+
+
+class Listusers:
+    @staticmethod
+    def response(user, server, args) -> None:
+        try:
+            if user.status_room == 'lobby':
+                user.connection_socket.send(
+                    (PrettyPrint.pretty_print("Você não está em nenhuma sala \n\n", Colors.FAIL)).encode()
+                )
+
+                user.connection_socket.send((
+                    "Os usuários no " + PrettyPrint.pretty_print(str("lobby"), Colors.UNDERLINE) + " são: \n\n"
+                ).encode())
+
+                for users in server.active_users:
+                    if users.status_room == "lobby":
+                        user.connection_socket.send(
+                            (" • " + PrettyPrint.pretty_print(str(users.nickname), Colors.WARNING) + "\n").encode())
+                    user.connection_socket.send("\n".encode())
+                return user
+
+            for room in server.registered_rooms:
+                if room.name == user.status_room:
+                    user.connection_socket.send((
+                        "Os usuários na sala " +
+                        PrettyPrint.pretty_print(str(room.name), Colors.UNDERLINE) + " são: \n\n"
+                    ).encode())
+
+                    for users in room.list_of_clients:
+                        user.connection_socket.send(
+                            (" • " + PrettyPrint.pretty_print(str(users.nickname), Colors.WARNING) + "\n").encode())
+                    user.connection_socket.send("\n".encode())
+                    return user
+
+        except Exception as exp:
+            print(exp.with_traceback(sys.exc_info()[2]))
+            user.connection_socket.send(
+                (PrettyPrint.pretty_print("Error in command list \n\n", Colors.FAIL)).encode())
+            return user
