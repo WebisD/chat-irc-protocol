@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS message (
     type integer NOT NULL,
     date text NOT NULL,
     PRIMARY KEY (id),
+    UNIQUE (id, sender_id, receiver_id),
     FOREIGN KEY (sender_id) REFERENCES user(nickname) ON DELETE CASCADE,
     FOREIGN KEY (receiver_id) REFERENCES user(nickname) ON DELETE CASCADE
 );
@@ -63,6 +64,7 @@ CREATE TABLE IF NOT EXISTS words (
 CREATE TABLE IF NOT EXISTS participants (
     user_id text NOT NULL,
     room_id text NOT NULL,
+    UNIQUE (user_id, room_id),
     FOREIGN KEY (user_id) REFERENCES user(nickname) ON DELETE CASCADE,
     FOREIGN KEY (room_id) REFERENCES room(id) ON DELETE CASCADE
 );
