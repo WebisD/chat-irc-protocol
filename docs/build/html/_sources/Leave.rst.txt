@@ -1,11 +1,7 @@
 Leave module
 ====================
 
-<<<<<<< HEAD
-.. automodule:: useCases.room.Leave
-=======
 .. automodule:: use_cases.room.leave
->>>>>>> master
    :members:
    :undoc-members:
    :show-inheritance:

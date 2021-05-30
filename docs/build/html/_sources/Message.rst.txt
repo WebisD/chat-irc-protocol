@@ -1,11 +1,7 @@
 Message module
 ====================
 
-<<<<<<< HEAD
-.. automodule:: useCases.user.Message
-=======
 .. automodule:: use_cases.user.message
->>>>>>> master
    :members:
    :undoc-members:
    :show-inheritance:

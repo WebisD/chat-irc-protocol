@@ -1,11 +1,7 @@
 Register module
 ====================
 
-<<<<<<< HEAD
-.. automodule:: useCases.user.Register
-=======
 .. automodule:: use_cases.user.register
->>>>>>> master
    :members:
    :undoc-members:
    :show-inheritance:

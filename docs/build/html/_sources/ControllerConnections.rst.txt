@@ -1,11 +1,7 @@
 ControllerConnections module
 ====================
 
-<<<<<<< HEAD
-.. automodule:: controllers.ControllerConnections
-=======
 .. automodule:: controllers.controller_connections
->>>>>>> master
    :members:
    :undoc-members:
    :show-inheritance:

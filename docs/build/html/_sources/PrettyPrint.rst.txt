@@ -1,11 +1,7 @@
 PrettyPrint module
 ====================
 
-<<<<<<< HEAD
-.. automodule:: util.PrettyPrint
-=======
 .. automodule:: util.pretty_print
->>>>>>> master
    :members:
    :undoc-members:
    :show-inheritance:

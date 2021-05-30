@@ -1,11 +1,7 @@
 ListUsers module
 ====================
 
-<<<<<<< HEAD
-.. automodule:: useCases.room.Listusers
-=======
 .. automodule:: use_cases.room.listusers
->>>>>>> master
    :members:
    :undoc-members:
    :show-inheritance:

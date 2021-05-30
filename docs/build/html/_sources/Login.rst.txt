@@ -1,11 +1,7 @@
 Login module
 ====================
 
-<<<<<<< HEAD
-.. automodule:: useCases.user.Login
-=======
 .. automodule:: use_cases.user.login
->>>>>>> master
    :members:
    :undoc-members:
    :show-inheritance:

@@ -8,17 +8,11 @@ Concord
    ControllerConnections
    ControllerRequests
    ControllerThread
-<<<<<<< HEAD
-   Server
-   Room
-   User
-=======
    ControllerDatabase
    Server
    Room
    User
    UserFactory
->>>>>>> master
    PrettyPrint
    Colors
    Create
@@ -37,6 +31,7 @@ Concord
    ParticipantsRepository
    RepositoryInterface
    RoomRepository
+   RoomMessagesRepository
    UserRepository
    WordsRepository
    DtoFile
