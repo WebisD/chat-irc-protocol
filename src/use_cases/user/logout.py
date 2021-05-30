@@ -15,7 +15,8 @@ class Logout:
     @staticmethod
     def response(user: User, server, args) -> User:
         """Performs the logout of user in the server 
-        
+
+        :param user: the user calling the logout method
         :param server: IP where the server will be allocated 
         :param args: args to logout the user 
         
