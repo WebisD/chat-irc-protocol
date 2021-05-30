@@ -1,7 +1,11 @@
 Server module
 ====================
 
+<<<<<<< HEAD
 .. automodule:: entities.Server
+=======
+.. automodule:: entities.ent_server
+>>>>>>> master
    :members:
    :undoc-members:
    :show-inheritance:

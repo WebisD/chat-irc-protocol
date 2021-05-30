@@ -11,8 +11,13 @@
   
 
   
+<<<<<<< HEAD
   <link rel="stylesheet" href="static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="static/pygments.css" type="text/css" />
+=======
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+>>>>>>> master
 
   
   
@@ -24,6 +29,7 @@
 
   
   <!--[if lt IE 9]>
+<<<<<<< HEAD
     <script src="static/js/html5shiv.min.js"></script>
   <![endif]-->
   
@@ -34,6 +40,18 @@
         <script src="static/doctools.js"></script>
     
     <script type="text/javascript" src="static/js/theme.js"></script>
+=======
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+>>>>>>> master
 
     
     <link rel="index" title="Index" href="genindex.html" />
@@ -91,9 +109,17 @@
 <li class="toctree-l2"><a class="reference internal" href="ControllerConnections.html">ControllerConnections module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ControllerRequests.html">ControllerRequests module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ControllerThread.html">ControllerThread module</a></li>
+<<<<<<< HEAD
 <li class="toctree-l2"><a class="reference internal" href="Server.html">Server module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Room.html">Room module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="User.html">User module</a></li>
+=======
+<li class="toctree-l2"><a class="reference internal" href="ControllerDatabase.html">ControllerDatabase module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server.html">Server module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Room.html">Room module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User.html">User module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UserFactory.html">UserFactory module</a></li>
+>>>>>>> master
 <li class="toctree-l2"><a class="reference internal" href="PrettyPrint.html">PrettyPrint module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Colors module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Create.html">Create module</a></li>
@@ -178,6 +204,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
+<<<<<<< HEAD
   <div class="section" id="module-util.Colors">
 <span id="colors-module"></span><h1>Colors module<a class="headerlink" href="#module-util.Colors" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
@@ -273,6 +300,103 @@
 <dl class="py attribute">
 <dt id="util.Colors.Colors.user_colors">
 <code class="sig-name descname"><span class="pre">user_colors</span></code><em class="property"> <span class="pre">=</span> <span class="pre">['\x1b[95m',</span> <span class="pre">'\x1b[94m',</span> <span class="pre">'\x1b[38;5;206m',</span> <span class="pre">'\x1b[38;5;202m',</span> <span class="pre">'\x1b[38;5;110m',</span> <span class="pre">'\x1b[38;5;156m',</span> <span class="pre">'\x1b[38;5;23m',</span> <span class="pre">'\x1b[38;5;243m']</span></em><a class="headerlink" href="#util.Colors.Colors.user_colors" title="Permalink to this definition">¶</a></dt>
+=======
+  <div class="section" id="module-util.colors">
+<span id="colors-module"></span><h1>Colors module<a class="headerlink" href="#module-util.colors" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="util.colors.Colors">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">util.colors.</span></code><code class="sig-name descname"><span class="pre">Colors</span></code><a class="headerlink" href="#util.colors.Colors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Enum class of colors</p>
+<dl class="py attribute">
+<dt id="util.colors.Colors.BLUE">
+<code class="sig-name descname"><span class="pre">BLUE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'\x1b[94m'</span></em><a class="headerlink" href="#util.colors.Colors.BLUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="util.colors.Colors.BOLD">
+<code class="sig-name descname"><span class="pre">BOLD</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'\x1b[1m'</span></em><a class="headerlink" href="#util.colors.Colors.BOLD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="util.colors.Colors.DARKGREEN">
+<code class="sig-name descname"><span class="pre">DARKGREEN</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'\x1b[38;5;23m'</span></em><a class="headerlink" href="#util.colors.Colors.DARKGREEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="util.colors.Colors.ENDC">
+<code class="sig-name descname"><span class="pre">ENDC</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'\x1b[0m'</span></em><a class="headerlink" href="#util.colors.Colors.ENDC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="util.colors.Colors.FAIL">
+<code class="sig-name descname"><span class="pre">FAIL</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'\x1b[91m'</span></em><a class="headerlink" href="#util.colors.Colors.FAIL" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="util.colors.Colors.GREY">
+<code class="sig-name descname"><span class="pre">GREY</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'\x1b[38;5;243m'</span></em><a class="headerlink" href="#util.colors.Colors.GREY" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="util.colors.Colors.MAGENTA">
+<code class="sig-name descname"><span class="pre">MAGENTA</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'\x1b[95m'</span></em><a class="headerlink" href="#util.colors.Colors.MAGENTA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="util.colors.Colors.OKCYAN">
+<code class="sig-name descname"><span class="pre">OKCYAN</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'\x1b[96m'</span></em><a class="headerlink" href="#util.colors.Colors.OKCYAN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="util.colors.Colors.OKGREEN">
+<code class="sig-name descname"><span class="pre">OKGREEN</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'\x1b[92m'</span></em><a class="headerlink" href="#util.colors.Colors.OKGREEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="util.colors.Colors.ORANGE">
+<code class="sig-name descname"><span class="pre">ORANGE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'\x1b[38;5;202m'</span></em><a class="headerlink" href="#util.colors.Colors.ORANGE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="util.colors.Colors.SEABLUE">
+<code class="sig-name descname"><span class="pre">SEABLUE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'\x1b[38;5;110m'</span></em><a class="headerlink" href="#util.colors.Colors.SEABLUE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="util.colors.Colors.TITLE">
+<code class="sig-name descname"><span class="pre">TITLE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'\x1b[6;32;40m'</span></em><a class="headerlink" href="#util.colors.Colors.TITLE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="util.colors.Colors.UNDERLINE">
+<code class="sig-name descname"><span class="pre">UNDERLINE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'\x1b[4m'</span></em><a class="headerlink" href="#util.colors.Colors.UNDERLINE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="util.colors.Colors.WARNING">
+<code class="sig-name descname"><span class="pre">WARNING</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'\x1b[93m'</span></em><a class="headerlink" href="#util.colors.Colors.WARNING" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="util.colors.Colors.WARNING_BOLD">
+<code class="sig-name descname"><span class="pre">WARNING_BOLD</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'\x1b[1;33;40'</span></em><a class="headerlink" href="#util.colors.Colors.WARNING_BOLD" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="util.colors.Colors.WHITEGREEN">
+<code class="sig-name descname"><span class="pre">WHITEGREEN</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'\x1b[38;5;156m'</span></em><a class="headerlink" href="#util.colors.Colors.WHITEGREEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="util.colors.Colors.WHITEPINK">
+<code class="sig-name descname"><span class="pre">WHITEPINK</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'\x1b[38;5;206m'</span></em><a class="headerlink" href="#util.colors.Colors.WHITEPINK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="util.colors.Colors.user_colors">
+<code class="sig-name descname"><span class="pre">user_colors</span></code><em class="property"> <span class="pre">=</span> <span class="pre">['\x1b[95m',</span> <span class="pre">'\x1b[94m',</span> <span class="pre">'\x1b[38;5;206m',</span> <span class="pre">'\x1b[38;5;202m',</span> <span class="pre">'\x1b[38;5;110m',</span> <span class="pre">'\x1b[38;5;156m',</span> <span class="pre">'\x1b[38;5;23m',</span> <span class="pre">'\x1b[38;5;243m']</span></em><a class="headerlink" href="#util.colors.Colors.user_colors" title="Permalink to this definition">¶</a></dt>
+>>>>>>> master
 <dd></dd></dl>
 
 </dd></dl>

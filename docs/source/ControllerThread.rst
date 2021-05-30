@@ -1,7 +1,7 @@
 ControllerThread module
 ====================
 
-.. automodule:: controllers.ControllerThread
+.. automodule:: controllers.controller_thread
    :members:
    :undoc-members:
    :show-inheritance:

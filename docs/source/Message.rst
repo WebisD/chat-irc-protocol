@@ -1,7 +1,7 @@
 Message module
 ====================
 
-.. automodule:: useCases.user.Message
+.. automodule:: use_cases.user.message
    :members:
    :undoc-members:
    :show-inheritance:

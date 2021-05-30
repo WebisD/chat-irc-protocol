@@ -1,7 +1,11 @@
 User module
 ====================
 
+<<<<<<< HEAD
 .. automodule:: entities.User
+=======
+.. automodule:: entities.ent_user
+>>>>>>> master
    :members:
    :undoc-members:
    :show-inheritance:

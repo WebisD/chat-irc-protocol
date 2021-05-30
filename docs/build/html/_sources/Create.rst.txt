@@ -1,7 +1,11 @@
 Create module
 ====================
 
+<<<<<<< HEAD
 .. automodule:: useCases.room.Create
+=======
+.. automodule:: use_cases.room.create
+>>>>>>> master
    :members:
    :undoc-members:
    :show-inheritance:

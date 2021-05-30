@@ -1,7 +1,11 @@
 Colors module
 ====================
 
+<<<<<<< HEAD
 .. automodule:: util.Colors
+=======
+.. automodule:: util.colors
+>>>>>>> master
    :members:
    :undoc-members:
    :show-inheritance:

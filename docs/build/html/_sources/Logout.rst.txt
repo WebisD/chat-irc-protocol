@@ -1,7 +1,11 @@
 Logout module
 ====================
 
+<<<<<<< HEAD
 .. automodule:: useCases.user.Logout
+=======
+.. automodule:: use_cases.user.logout
+>>>>>>> master
    :members:
    :undoc-members:
    :show-inheritance:

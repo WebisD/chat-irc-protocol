@@ -1,0 +1,1 @@
+DROP DATABASE irc_protocol_database;

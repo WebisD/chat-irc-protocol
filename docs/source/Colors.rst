@@ -1,7 +1,7 @@
 Colors module
 ====================
 
-.. automodule:: util.Colors
+.. automodule:: util.colors
    :members:
    :undoc-members:
    :show-inheritance:
