@@ -31,6 +31,7 @@ Concord
    ParticipantsRepository
    RepositoryInterface
    RoomRepository
+   RoomMessagesRepository
    UserRepository
    WordsRepository
    DtoFile
