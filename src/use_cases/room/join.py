@@ -24,7 +24,11 @@ class Join:
             if room.name == room_name:
                 if room.add(user):
                     user.status_room = room_name
-                    server.participants_repository.put(dtoParticipants(nickname=user.nickname, room_id=room.id))
+
+                    if server.participants_repository.find_one_by_user_id_and_room_id(user.nickname,
+                                                                                      room.name) is not None:
+                        server.participants_repository.put(dtoParticipants(nickname=user.nickname, room_id=room.id))
+
                     return user
 
         user.connection_socket.send(

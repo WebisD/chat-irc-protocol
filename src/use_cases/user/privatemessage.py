@@ -20,9 +20,9 @@ class Privatemessage:
 
             receiver_user = None
 
-            for userRegistered in server.registered_users:
-                if userRegistered.nickname == receiver_nick:
-                    receiver_user = userRegistered
+            for registered_user in server.registered_users:
+                if registered_user.nickname == receiver_nick:
+                    receiver_user = registered_user
 
             if not receiver_user:
                 raise Exception(f"There is no one called '{args[0]}' on Concord\n\n")

@@ -98,6 +98,28 @@ class ParticipantsRepository(RepositoryInterface):
 
         return None, False
 
+    def find_one_by_user_id_and_room_id(self, user_id: str, room_id: str) -> Tuple[Participants or None, bool]:
+        try:
+            self.controller_database.run_query_with_args(
+                f'''
+                    SELECT * from {self.table_name}
+                    WHERE user_id = :user_id AND room_id = :room_id
+                ''',
+                {"user_id": user_id, "room_id": room_id}
+            )
+
+            result = self.controller_database.fetch_one_result_from_last_query()
+
+            if result:
+                message = Participants(*result)
+                return message, True
+
+        except Exception as exp:
+            print(f"Could not find participant with user_id {user_id} and room_id {room_id}")
+            print(repr(exp))
+
+        return None, False
+
     def update_by_user_id(self, user_id: str, new_data: Participants) -> bool:
         try:
             self.controller_database.run_query_with_args(

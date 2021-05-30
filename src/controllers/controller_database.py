@@ -12,7 +12,7 @@ class ControllerDatabase:
                  db_name: str,
                  sql_file_path: str = f"../docs/Relationship Model/DDL Generated/data_model_table_create.sql"
                  ):
-        self.connection: Connection = connect(db_name, check_same_thread=False)
+        self.connection: Connection = connect(db_name, check_same_thread=False, timeout=5)
         self.cursor: Cursor = self.connection.cursor()
 
         try:

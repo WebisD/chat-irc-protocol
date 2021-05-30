@@ -1,5 +1,9 @@
 import sys
+import uuid
 from entities.ent_user import *
+from dtos.dto_words import Words
+from dtos.dto_message import Message as dtoMessage
+from dtos.dto_message import Message as dtoMessage
 from util import *
 
 __all__ = ['Message']
@@ -17,6 +21,24 @@ class Message:
             for room in server.registered_rooms:
                 if room.name == user.status_room:
                     room.broadcast(message, user)
+                    words: Words = Words(
+                        words_id=uuid.uuid4().__str__(),
+                        content=message
+                    )
+                    server.words_repository.put(words)
+
+                    msg: dtoMessage = dtoMessage(
+                        message_id=uuid.uuid4().__str__(),
+                        sender_id=user.nickname,
+                        receiver_id="BROADCAST",
+                        content_id=words.id,
+                        content_type=0,
+                    )
+
+                    print(msg)
+
+                    server.message_repository.put(msg)
+
                     return user
 
         except Exception as exp:
