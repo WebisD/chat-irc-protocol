@@ -6,11 +6,22 @@ __all__ = ['UserRepository']
 
 
 class UserRepository(RepositoryInterface):
+    """A class that manipulates the user table"""
+
     def __init__(self, db_name: str = "concord.db") -> None:
+        """Responsible for initializing the UserRepository
+
+        :param db_name: the database name
+        :returns: None
+        """
         super().__init__(db_name)
         self.table_name: str = 'user'
 
     def get_all_users(self) -> Tuple[User or None, bool]:
+        """Finds all Participants containing the user_id
+
+        :returns: A tuple containing containing all users and whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query(
                 f'''
@@ -31,6 +42,11 @@ class UserRepository(RepositoryInterface):
         return None, False
 
     def find_all_by_id(self, user_id: str) -> Tuple[List[User], bool]:
+        """Finds all Users containing the user_id
+
+        :param user_id: the user's unique identification code
+        :returns: A tuple containing containing the list of users and whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query_with_args(
                 f'''
@@ -54,6 +70,11 @@ class UserRepository(RepositoryInterface):
         return [], False
 
     def find_by_id(self, user_id: str) -> Tuple[User or None, bool]:
+        """Finds one Users containing the user_id
+
+        :param user_id: the user's unique identification code
+        :returns: A tuple containing containing one user and whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query_with_args(
                 f'''
@@ -75,6 +96,12 @@ class UserRepository(RepositoryInterface):
         return None, False
 
     def update_by_id(self, user_id: str, new_data: User) -> bool:
+        """Updates one Users containing the user_id
+
+        :param user_id: the user's unique identification code
+        :param new_data: the user's new data
+        :returns: A boolean representing whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query_with_args(
                 query=f'''
@@ -97,6 +124,11 @@ class UserRepository(RepositoryInterface):
         return True
 
     def delete_by_id(self, user_id: str) -> bool:
+        """Deletes one Users containing the user_id
+
+        :param user_id: the user's unique identification code
+        :returns: A boolean representing whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query_with_args(
                 query=f'''
@@ -117,6 +149,11 @@ class UserRepository(RepositoryInterface):
         return True
 
     def put(self, user: User) -> bool:
+        """Puts one Users containing the user_id
+
+        :param user: the user to be stored in the database
+        :returns: A boolean representing whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query_with_args(
                 query=f'''

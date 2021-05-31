@@ -61,7 +61,7 @@ class ControllerDatabase:
         self.cursor.execute(query)
 
     def run_query_with_args(self, query: str, args: dict):
-        self.cursor.execute(query, args)
+        self.connection.cursor().execute(query, args)
 
     def fetch_all_results_from_last_query(self) -> List[Any]:
         return self.cursor.fetchall()
