@@ -42,13 +42,13 @@
       <a href="#-commands">Commands</a>
         <ul>
           <li><a href="#-help">Help</a></li>
-          <li><a href="#-register">Register</a></li>
+          <li><a href="#%EF%B8%8F-register">Register</a></li>
           <li><a href="#-login">Login</a></li>
           <li><a href="#-create">Create</a></li>
-          <li><a href="#-listroom">Listroom</a></li>
+          <li><a href="#-list-room">Listroom</a></li>
           <li><a href="#-join">Join</a></li>
           <li><a href="#-message">Message</a></li>
-          <li><a href="#-listusers">Listusers</a></li>
+          <li><a href="#-list-users">Listusers</a></li>
           <li><a href="#-leave">Leave</a></li>
           <li><a href="#-logout">Logout</a></li>
           <li><a href="#-quit">Quit</a></li>
@@ -113,22 +113,96 @@ $ telnet localhost 8083
 ```
 
 ## 🛠 Commands
-### 🆘 help
+### 🆘 Help
 Type `/help` to see all commands and arguments if needed
 
-The available commands depend on whether you are logged in or not:
+The available commands depend on whether you are logged in:
 
-![]()
+![](.github/help_logged.PNG)
 
-### 🆘 register
-Type `/help` to see all commands and arguments if needed
+or not:
 
-The available commands depend on whether you are logged in or not:
-
-![]()
+![](.github/help_unlogged.PNG)
 
 
+### ®️ Register
+Type `/register <name> <nick> <pass>` to register in discord
 
+This needs 3 arguments:
+
+> **name**: your name
+
+> **nick**: your nick name. This will show up for other users
+
+> **pass**: your password. Don't forget this!
+
+![](.github/register.PNG)
+
+### 🔒 Login
+Type `/login <nick> <pass>` to login in Concord
+
+This needs 2 arguments:
+
+> **nick**: your nick name. This will show up for other users
+
+> **pass**: your password. I hope you remember that
+
+![](.github/login.PNG)
+
+### 🆕 Create
+Type `/create <room_name> <size>` to create a new room and chat with your friends
+
+This needs 2 arguments:
+
+> **room_name**: the name of your room. Don't put spaces in the name, use '_' instead
+
+> **size**: maximum number of users who can enter the room
+
+![](.github/create.PNG)
+
+### 📜 List room
+Type `/listroom` or `/lr` to list all rooms in Concord
+
+![](.github/listroom.PNG)
+
+### 🚪 Join
+Type `/join <room_name>` to enter in a room
+
+> **room_name**: the name of the room you want to join
+
+![](.github/join.PNG)
+
+### 💬 Message
+Type `/message <your_message>` or `/m <your_message>` to send a message to your friends
+
+> **your_message**: the message you want to send to your friends
+
+![](.github/message.PNG)
+
+
+### 📜 List users
+Type `/listusers` or `/lu` to list all users in your current place
+
+If you are in a room, this command will only show users in the room
+
+If you are in the lobby, this command will only show users in concord but are not in any room
+
+![](.github/listusers.PNG)
+
+### 🚪 Leave
+Type `/leave` to leave a room you are in
+
+![](.github/leave.PNG)
+
+### 🚪 Logout
+Type `/logout` to logout of your account
+
+![](.github/logout.PNG)
+
+### 🚪 Quit
+Type `/Quit` to fully get out of Concord
+
+![](.github/quit.PNG)
 
 <!-- AUTHORS -->
 ## 🤖 Authors
