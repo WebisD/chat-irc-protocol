@@ -42,7 +42,7 @@
       <a href="#-commands">Commands</a>
         <ul>
           <li><a href="#-help">Help</a></li>
-          <li><a href="#-register">Register</a></li>
+          <li><a href="#%EF%B8%8F-register">Register</a></li>
           <li><a href="#-login">Login</a></li>
           <li><a href="#-create">Create</a></li>
           <li><a href="#-list-room">Listroom</a></li>
