@@ -17,7 +17,7 @@ class Help:
         '/leave': None,
         '/logout': None,
         '/quit': None,
-        '/privatemessage': '<receiver_user> <your_message>'
+        # '/privatemessage': '<receiver_user> <your_message>'
     }
     not_logged_commands = {
         '/help': None,
@@ -29,7 +29,7 @@ class Help:
         '/listroom': '/lr',
         '/listusers': '/lu',
         '/message': '/m',
-        '/privatemessage': '/pm',
+        # '/privatemessage': '/pm',
     }
 
     @staticmethod
@@ -65,7 +65,7 @@ class Help:
 
     @staticmethod
     def get_full_command(value) -> str:
-        """Performs the comparision of command
+        """Performs the comparison of command
         
         :param value: commands
         
