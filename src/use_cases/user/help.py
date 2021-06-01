@@ -21,7 +21,7 @@ class Help:
     }
     not_logged_commands = {
         '/help': None,
-        '/register': '<name> <pass> <nick>',
+        '/register': '<name> <nick> <pass>',
         '/login':  '<nick> <pass>',
         '/quit': None,
     }
