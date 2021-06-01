@@ -53,7 +53,7 @@ class Logout:
         except Exception as exp:
             print(exp.with_traceback(sys.exc_info()[2]))
             user.connection_socket.send((PrettyPrint.pretty_print(
-                "Error in logging client out\n\n", Colors.FAIL
+                f"Error in logging client out: {exp}\n\n", Colors.FAIL
             )).encode())
 
             return user

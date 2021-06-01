@@ -31,7 +31,7 @@ class Listusers:
                     if users.status_room == "lobby":
                         user.connection_socket.send(
                             (" • " + PrettyPrint.pretty_print(str(users.nickname), Colors.WARNING) + "\n").encode())
-                    user.connection_socket.send("\n".encode())
+                user.connection_socket.send("\n".encode())
                 return user
 
             for room in server.registered_rooms:

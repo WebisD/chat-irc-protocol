@@ -33,10 +33,10 @@ class ControllerConnections(Thread):
             connection_socket.send(('\n' +
                                    (PrettyPrint.pretty_print("CONCORD".center(self.width), Colors.TITLE))).encode())
 
-            connection_socket.send((f"\n\nSeja bem vindo ao concord!\n\nDeseja se registrar ou logar?\n"
-                                   + f"Para logar execute "
+            connection_socket.send((f"\n\nWelcome to Concord!\n\nDo you want to register or login?\n"
+                                   + f"To login run"
                                      f"{PrettyPrint.pretty_print('/login <user> <passw>', Colors.WARNING)} \n"
-                                   + f"Para registrar execute "
+                                   + f"To register run "
                                      f"{PrettyPrint.pretty_print('/register <name> <user> <passw>', Colors.WARNING)}"
                                      f"\n\n").encode())
 

@@ -42,8 +42,16 @@ class Room:
             if client.connection_socket != user.connection_socket:
                 try:
                     name_color = PrettyPrint.pretty_print(user.nickname, user.color)
-                    message_body = ('\t\t\t\t\t' + name_color + ": " + message + "\n")
-                    client.connection_socket.send(message_body.encode())
+                    difference = len(name_color) - len(user.nickname)
+
+                    splited_message = PrettyPrint.wrap(user.nickname + message, self.width/2).split('\n')
+                    for msg in splited_message:
+                        if msg.startswith(user.nickname):
+                            message_body = (name_color + ": " + msg[len(user.nickname):] + "\n").rjust(self.width
+                                                                                                       + difference)
+                        else:
+                            message_body = (msg + "\n").rjust(self.width)
+                        client.connection_socket.send(message_body.encode())
                     self.messages['user'].append(user.nickname)
                     self.messages['txt'].append(message)
 
@@ -53,7 +61,14 @@ class Room:
                     self.remove(client)
             else:
                 name_color = PrettyPrint.pretty_print(user.nickname, user.color)
-                user.connection_socket.send(('\r\t\t\t\t\t' + name_color + ": " + message + "\n").encode())
+                splited_message = PrettyPrint.wrap(user.nickname + message, self.width / 2).split('\n')
+
+                for msg in splited_message:
+                    if msg.startswith(user.nickname):
+                        message_body = (name_color + ": " + msg[len(user.nickname):] + "\n")
+                    else:
+                        message_body = (msg + "\n")
+                    client.connection_socket.send(message_body.encode())
 
     def remove(self, user: User) -> bool:
         """ Remove an user of room 
@@ -64,7 +79,7 @@ class Room:
         """
         if user in self.list_of_clients:
             self.list_of_clients.remove(user)
-            self.broadcast("Sai da sala " + str(user.name), user)
+            self.broadcast(str(user.name) + "left the room", user)
             user.connection_socket.send(("Say goodbye to " + self.name + "!\n\n").encode())
             return True
         return False
@@ -83,7 +98,7 @@ class Room:
 
             user.connection_socket.send(
                 (PrettyPrint.pretty_print("Welcome " + self.name + "!\n\n", Colors.OKGREEN)).encode())
-            self.broadcast("Entrei na sala " + str(user.name), user)
+            self.broadcast(str(user.name) + " arrived in the room! Say hi 👋", user)
             return True
         return False
 

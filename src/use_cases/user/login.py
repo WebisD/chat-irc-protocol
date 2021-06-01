@@ -84,6 +84,6 @@ class Login:
         except Exception as exp:
             print(exp.with_traceback(sys.exc_info()[2]))
             user.connection_socket.send(
-                (PrettyPrint.pretty_print("Error in logging client '" + str(args[0]) + "'in \n\n", Colors.FAIL)).encode())
+                (PrettyPrint.pretty_print("Error in logging client '" + str(args[0]) + "' in \n\n", Colors.FAIL)).encode())
 
             return user

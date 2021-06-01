@@ -22,8 +22,10 @@ class Message:
         :returns: user obj with the changes
         """
         try:
-            if not user.is_logged or user.status_room == 'lobby':
-                raise Exception("Invalid command")
+            if not user.is_logged:
+                raise Exception("Not logged")
+            elif user.status_room == 'lobby':
+                raise Exception("Not in a room")
 
             message = " ".join(args)
 
@@ -56,7 +58,7 @@ class Message:
             message = " ".join(args)
 
             user.connection_socket.send(
-                (PrettyPrint.pretty_print("Error in sending message '" + message + "'. Are you logged?' \n\n",
+                (PrettyPrint.pretty_print(f"Error in sending message: {exp}\n\n",
                                           Colors.FAIL)).encode())
 
         return user
