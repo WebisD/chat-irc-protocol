@@ -6,11 +6,23 @@ __all__ = ['ParticipantsRepository']
 
 
 class ParticipantsRepository(RepositoryInterface):
+    """A class that manipulates the participants table"""
+
     def __init__(self, db_name: str = "concord.db") -> None:
+        """Responsible for initializing the ParticipantsRepository
+
+        :param db_name: the database name
+        :returns: None
+        """
         super().__init__(db_name)
         self.table_name: str = 'participants'
 
     def find_all_by_user_id(self, user_id: str) -> Tuple[List[Participants], bool]:
+        """Finds all Participants containing the user_id
+
+        :param user_id: the participant's user id
+        :returns: A tuple containing containing the list of participants and whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query_with_args(
                 f'''
@@ -34,6 +46,11 @@ class ParticipantsRepository(RepositoryInterface):
         return [], False
 
     def find_all_by_room_id(self, room_id: str) -> Tuple[List[Participants], bool]:
+        """Finds all Participants containing the room_id
+
+        :param room_id: the participant's room id
+        :returns: A tuple containing containing the list of participants and whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query_with_args(
                 f'''
@@ -57,6 +74,11 @@ class ParticipantsRepository(RepositoryInterface):
         return [], False
 
     def find_one_by_user_id(self, user_id: str) -> Tuple[Participants or None, bool]:
+        """Finds one Participants containing the user_id
+
+        :param user_id: the participant's user_id
+        :returns: A tuple containing containing one participant and whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query_with_args(
                 f'''
@@ -78,6 +100,11 @@ class ParticipantsRepository(RepositoryInterface):
         return None, False
 
     def find_one_by_room_id(self, room_id: str) -> Tuple[Participants or None, bool]:
+        """Finds one Participants containing the room_id
+
+        :param room_id: the participant's room_id
+        :returns: A tuple containing containing one participant and whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query_with_args(
                 f'''
@@ -99,6 +126,12 @@ class ParticipantsRepository(RepositoryInterface):
         return None, False
 
     def find_one_by_user_id_and_room_id(self, user_id: str, room_id: str) -> Tuple[Participants or None, bool]:
+        """Finds one Participants containing both the given user_id and room_id
+
+        :param user_id: the participant's user_id
+        :param room_id: the participant's room_id
+        :returns: A tuple containing containing one participant and whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query_with_args(
                 f'''
@@ -121,6 +154,12 @@ class ParticipantsRepository(RepositoryInterface):
         return None, False
 
     def update_by_user_id(self, user_id: str, new_data: Participants) -> bool:
+        """Finds one Participants containing the user_id
+
+        :param user_id: the participant's user_id
+        :param new_data: the participant's new data
+        :returns: A tuple containing containing one participant and whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query_with_args(
                 query=f'''
@@ -149,6 +188,12 @@ class ParticipantsRepository(RepositoryInterface):
         return True
 
     def update_by_room_id(self, room_id: str, new_data: Participants) -> bool:
+        """Finds one Participants containing the room_id
+
+        :param room_id: the participant's room_id
+        :param new_data: the participant's new data
+        :returns: A tuple containing containing one participant and whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query_with_args(
                 query=f'''
@@ -177,6 +222,11 @@ class ParticipantsRepository(RepositoryInterface):
         return True
 
     def delete_by_user_id(self, user_id: str) -> bool:
+        """Deletes all Participants containing the user_id
+
+        :param user_id: the participant's user_id
+        :returns: A boolean representing whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query_with_args(
                 query=f'''
@@ -197,6 +247,11 @@ class ParticipantsRepository(RepositoryInterface):
         return True
 
     def delete_by_room_id(self, room_id: str) -> bool:
+        """Deletes all Participants containing the room_id
+
+        :param room_id: the participant's room_id
+        :returns: A boolean representing whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query_with_args(
                 query=f'''
@@ -217,6 +272,11 @@ class ParticipantsRepository(RepositoryInterface):
         return True
 
     def put(self, participant: Participants) -> bool:
+        """Deletes all Participants containing the user_id
+
+        :param participant: A participant to be stored in the database
+        :returns: A boolean representing whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query_with_args(
                 query=f'''

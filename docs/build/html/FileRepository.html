@@ -37,7 +37,9 @@
 
     
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="MessageRepository module" href="MessageRepository.html" />
+    <link rel="prev" title="PrivateMessage module" href="PrivateMessage.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,8 +85,47 @@
             
             
               <p class="caption"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="modules.html">Concord</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Concord</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ControllerConnections.html">ControllerConnections module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ControllerRequests.html">ControllerRequests module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ControllerThread.html">ControllerThread module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ControllerDatabase.html">ControllerDatabase module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Server.html">Server module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Room.html">Room module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="User.html">User module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UserFactory.html">UserFactory module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PrettyPrint.html">PrettyPrint module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Colors.html">Colors module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Create.html">Create module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Join.html">Join module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Leave.html">Leave module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListUsers.html">ListUsers module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Help.html">Help module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListRoom.html">ListRoom module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Logout.html">Logout module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Login.html">Login module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Message.html">Message module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Register.html">Register module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PrivateMessage.html">PrivateMessage module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">FileRepository module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MessageRepository.html">MessageRepository module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ParticipantsRepository.html">ParticipantsRepository module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RepositoryInterface.html">RepositoryInterface module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RoomRepository.html">RoomRepository module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RoomMessagesRepository.html">RoomMessagesRepository module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UserRepository.html">UserRepository module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="WordsRepository.html">WordsRepository module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DtoFile.html">DtoFile module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DtoMessage.html">DtoMessage module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DtoParticipants.html">DtoParticipants module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DtoRoom.html">DtoRoom module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DtoRoomMessages.html">DtoRoomMessages module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DtoUser.html">DtoUser module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DtoWords.html">DtoWords module</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -133,6 +174,8 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
+          <li><a href="modules.html">Concord</a> &raquo;</li>
+        
       <li>FileRepository module</li>
     
     
@@ -158,30 +201,79 @@
 <dt id="repositories.file_repository.FileRepository">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">repositories.file_repository.</span></code><code class="sig-name descname"><span class="pre">FileRepository</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db_name</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'concord.db'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#repositories.file_repository.FileRepository" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="RepositoryInterface.html#repositories.repository_interface.RepositoryInterface" title="repositories.repository_interface.RepositoryInterface"><code class="xref py py-class docutils literal notranslate"><span class="pre">repositories.repository_interface.RepositoryInterface</span></code></a></p>
+<p>A class that manipulates the file table</p>
 <dl class="py method">
 <dt id="repositories.file_repository.FileRepository.delete_by_id">
 <code class="sig-name descname"><span class="pre">delete_by_id</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#repositories.file_repository.FileRepository.delete_by_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Deletes all Files containing the file_id”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_id</strong> – the file’s unique identification code</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A tuple containing containing the list of files and whether the operation was successful or not</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="repositories.file_repository.FileRepository.find_all_by_id">
 <code class="sig-name descname"><span class="pre">find_all_by_id</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="DtoFile.html#dtos.dto_file.File" title="dtos.dto_file.File"><span class="pre">dtos.dto_file.File</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#repositories.file_repository.FileRepository.find_all_by_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Finds all Files containing the file_id”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file_id</strong> – the file’s unique identification code</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A tuple containing containing the list of files and whether the operation was successful or not</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="repositories.file_repository.FileRepository.find_by_id">
 <code class="sig-name descname"><span class="pre">find_by_id</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">words_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="DtoFile.html#dtos.dto_file.File" title="dtos.dto_file.File"><span class="pre">dtos.dto_file.File</span></a><span class="p"><span class="pre">,</span> </span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#repositories.file_repository.FileRepository.find_by_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Finds one File containing the file_id”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>words_id</strong> – the file’s unique identification code</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A tuple containing containing file and whether the operation was successful or not</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="repositories.file_repository.FileRepository.put">
 <code class="sig-name descname"><span class="pre">put</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="DtoFile.html#dtos.dto_file.File" title="dtos.dto_file.File"><span class="pre">dtos.dto_file.File</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#repositories.file_repository.FileRepository.put" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Puts all Files containing the file_id”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>file</strong> – the file to be stored on the database</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A boolean representing whether the operation was successful or not</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="repositories.file_repository.FileRepository.update_by_id">
 <code class="sig-name descname"><span class="pre">update_by_id</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_id</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_data</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><a class="reference internal" href="DtoFile.html#dtos.dto_file.File" title="dtos.dto_file.File"><span class="pre">dtos.dto_file.File</span></a></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">bool</span><a class="headerlink" href="#repositories.file_repository.FileRepository.update_by_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Updates all Files containing the file_id”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>file_id</strong> – the file’s unique identification code</p></li>
+<li><p><strong>new_data</strong> – the file’s new data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A tuple containing containing the list of files and whether the operation was successful or not</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 
@@ -192,6 +284,10 @@
            
           </div>
           <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="MessageRepository.html" class="btn btn-neutral float-right" title="MessageRepository module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="PrivateMessage.html" class="btn btn-neutral float-left" title="PrivateMessage module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 

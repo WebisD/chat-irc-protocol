@@ -27,7 +27,7 @@ class ControllerRequests(Thread):
     def parse_request(self, request) -> None:
         """ Responsible for checking the request type and calling the appropriate method
 
-        :param request: A Request object 
+        :param request: A Request object
 
         :returns: None
         """
@@ -36,14 +36,20 @@ class ControllerRequests(Thread):
             request = request.replace('\n', '').replace('\r', '').split(' ')
 
             # Check if it's an abbreviation
+
+            if len(request) <= 0:
+                raise Exception("Request length is equal or less than 0")
+
             if (request[0]).lower() in Help.acronyms.values():
                 request[0] = Help.get_full_command((request[0]).lower())
 
             command = (request[0]).title().replace('/', '')
             print(command)
+
             args = []
             if len(request) > 1:
                 args = request[1:]
+
             print(command)
             print(args)
 
@@ -87,7 +93,9 @@ class ControllerRequests(Thread):
 
             except Exception as exp:
                 print(exp.with_traceback(sys.exc_info()[2]))
-                self.close_connection()
+                break
+
+        self.close_connection()
 
     def close_connection(self) -> None:
         """ Responsible for stop the thread and logout user

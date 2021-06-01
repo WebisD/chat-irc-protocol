@@ -6,11 +6,23 @@ __all__ = ['FileRepository']
 
 
 class FileRepository(RepositoryInterface):
+    """A class that manipulates the file table"""
     def __init__(self, db_name: str = "concord.db") -> None:
+        """Responsible for initializing the FileRepository
+
+        :param db_name: the database name
+        :returns: None
+        """
         super().__init__(db_name)
         self.table_name: str = 'file'
 
     def find_all_by_id(self, file_id: str) -> Tuple[List[File], bool]:
+        """Finds all Files containing the file_id"
+
+        :param file_id: the file's unique identification code
+        :returns: A tuple containing containing the list of files and whether the operation was successful or not
+        """
+
         try:
             self.controller_database.run_query_with_args(
                 f'''
@@ -34,6 +46,11 @@ class FileRepository(RepositoryInterface):
         return [], False
 
     def find_by_id(self, words_id: str) -> Tuple[File or None, bool]:
+        """Finds one File containing the file_id"
+
+        :param words_id: the file's unique identification code
+        :returns: A tuple containing containing file and whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query_with_args(
                 f'''
@@ -55,6 +72,13 @@ class FileRepository(RepositoryInterface):
         return None, False
 
     def update_by_id(self, file_id: str, new_data: File) -> bool:
+        """Updates all Files containing the file_id"
+
+        :param file_id: the file's unique identification code
+        :param new_data: the file's new data
+        :returns: A tuple containing containing the list of files and whether the operation was successful or not
+        """
+
         try:
             self.controller_database.run_query_with_args(
                 query=f'''
@@ -76,6 +100,11 @@ class FileRepository(RepositoryInterface):
         return True
 
     def delete_by_id(self, file_id: str) -> bool:
+        """Deletes all Files containing the file_id"
+
+        :param file_id: the file's unique identification code
+        :returns: A tuple containing containing the list of files and whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query_with_args(
                 query=f'''
@@ -96,6 +125,11 @@ class FileRepository(RepositoryInterface):
         return True
 
     def put(self, file: File) -> bool:
+        """Puts all Files containing the file_id"
+
+        :param file: the file to be stored on the database
+        :returns: A boolean representing whether the operation was successful or not
+        """
         try:
             self.controller_database.run_query_with_args(
                 query=f'''
