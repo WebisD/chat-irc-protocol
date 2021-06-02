@@ -32,6 +32,11 @@ class ControllerRequests(Thread):
         :returns: None
         """
         try:
+            print(request)
+            print([request])
+            if request == '\r\n':
+                return
+
             print(self.user.to_string())
             request = request.replace('\n', '').replace('\r', '').split(' ')
 
