@@ -177,8 +177,11 @@ Type `/message <your_message>` or `/m <your_message>` to send a message to your 
 
 > **your_message**: the message you want to send to your friends
 
-![](.github/message.PNG)
+Sender's view:
+![](.github/message_send.PNG)
 
+Receiver's view:
+![](.github/message_receive.PNG)
 
 ### 📜 List users
 Type `/listusers` or `/lu` to list all users in your current place
