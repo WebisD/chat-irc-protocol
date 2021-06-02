@@ -69,7 +69,7 @@ Our application runs on the terminal using *telnet*.
 
 The HTTP server was implemented according to the [RFC 1459](https://datatracker.ietf.org/doc/html/rfc1459#section-1.1), which defines the IRC protocol.
 
-![app](https://github.com/WebisD/http-api-without-lib/blob/master/.github/app.gif)
+![app](https://github.com/WebisD/chat-irc-protocol/blob/master/.github/app.gif)
 
 
 <!-- DOCUMENTATION -->
