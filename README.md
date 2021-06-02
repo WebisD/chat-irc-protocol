@@ -63,11 +63,11 @@
 
 <!-- ABOUT THE PROJECT -->
 ## 💻 About The Project
-In this project, we implemented a chat application with the main feature of discord or whatsapp: creating a room to chat with friends.
+In this project, we implemented a chat application mirroring that of discord's and whatsapp's main feature: a room to chat with friends.
 
 Our application runs on the terminal using *telnet*.
 
-The HTTP server was implemented according to the [RFC 1459](https://datatracker.ietf.org/doc/html/rfc1459#section-1.1), which defines the IRC protocol.
+Our application server was implemented according to the [RFC 1459](https://datatracker.ietf.org/doc/html/rfc1459#section-1.1), which defines the IRC protocol.
 
 ![app](https://github.com/WebisD/chat-irc-protocol/blob/master/.github/app.gif)
 
@@ -176,7 +176,7 @@ Type `/join <room_name>` to enter in a room
 Type `/message <your_message>` or `/m <your_message>` to send a message to your friends
 
 > **your_message**: the message you want to send to your friends
-
+ server
 Sender's view:
 ![](.github/message_send.PNG)
 
@@ -188,12 +188,12 @@ Type `/listusers` or `/lu` to list all users in your current place
 
 If you are in a room, this command will only show users in the room
 
-If you are in the lobby, this command will only show users in concord but are not in any room
+If you are in the lobby, this command will only show users in Concord who are also not in a room
 
 ![](.github/listusers.PNG)
 
 ### 🚪 Leave
-Type `/leave` to leave a room you are in
+Type `/leave` to leave the room you are in
 
 ![](.github/leave.PNG)
 
