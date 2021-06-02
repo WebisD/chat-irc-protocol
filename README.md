@@ -83,6 +83,9 @@ You can read the code documentation here:
 
 <!-- HOW TO RUN -->
 ## 🚀 How To Run
+
+⚠️ For a better experience, make the server terminal and client terminal the same size ⚠️
+
 ### Server
 ```bash
 
