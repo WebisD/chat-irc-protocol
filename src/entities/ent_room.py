@@ -69,6 +69,7 @@ class Room:
                     else:
                         message_body = (msg + "\n")
                     client.connection_socket.send(message_body.encode())
+                client.connection_socket.send('\n'.encode())
 
     def remove(self, user: User) -> bool:
         """ Remove an user of room 
@@ -79,7 +80,7 @@ class Room:
         """
         if user in self.list_of_clients:
             self.list_of_clients.remove(user)
-            self.broadcast(str(user.name) + "left the room", user)
+            self.broadcast(str(user.name) + " left the room", user)
             user.connection_socket.send(("Say goodbye to " + self.name + "!\n\n").encode())
             return True
         return False
